@@ -1,0 +1,32 @@
+NECESSARY REQUIREMENTS FOR SYSTEM:
+    - Make it look like Twitter using any CSS library or plain CSS.
+    - Have back-end validation
+    - Have front-end validation. Use any library you want or create your own.
+    - Keep the data in lists and/or dictionaries. Recommended is to use SQLite.
+    - The application must be deployed to PythonAnywhere.
+    - Use proper HTTP methods: GET, POST, PUT, DELETE
+    - Use proper HTTP status codes: 20x, 30x, 40x, 50x
+    - Use try/except
+    - Use regular expressions where needed  
+
+NECESSARY FUNCTIONALITIES FOR APPLICATION:
+    - Every part should try to be a SPA.
+    - SING UP/REGISTER - A simple page that redirects somewhere. Can be made as a SPA.
+    - SIGN IN/LOGIN - A simple page that redirects somewhere. Can be made as a SPA.
+    - SIGN OUT/LOUGOUT - A simple page that redirects somewhere. Can be made as SPA.
+    - USE A SESSION - Can be done in the SIGN IN/LOGIN.
+    - USE A JWT - Can be done in the SESSION as a part of a cookie.
+    - CREATE TWEET - Page shouldn't reload.
+    - DELETE TWEET - Page shouldn't reload.
+    - UPDATE TWEET - Page shouldn't reload.
+    - SEE TWEETS FROM OTHER USERS - A simple page that may or may not be a SPA.
+    - LIKE TWEET 
+    - UNLIKE TWEET
+    - ADMIN PANEL - This is a "stand-alone" feature. This means that it doesn't 
+        have to be part of the twitter application, but can be a whole different solution. 
+        The administrator can see all tweets and delete them if wanted. It is a SPA, 
+        so deleting a tweet doesn't reload the whole page.
+
+OPTIONAL FUNCTIONALITIES FOR APPLICATION:
+    - FOLLOW SOMEONE - Page shouldn't reload.
+    - SEND AN EMAIL WHEN THE USER SIGNS UP
