@@ -3,6 +3,7 @@ from bottle import run, static_file, get
 ##################################################
 # Api
 import api.post_user
+import api.post_session
 
 ##################################################
 @get('/app.css')

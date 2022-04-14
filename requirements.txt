@@ -12,10 +12,10 @@ NECESSARY REQUIREMENTS FOR SYSTEM:
 NECESSARY FUNCTIONALITIES FOR APPLICATION:
     - Every part should try to be a SPA.
  ✅    - SING UP/REGISTER - A simple page that redirects somewhere. Can be made as a SPA.
-    - SIGN IN/LOGIN - A simple page that redirects somewhere. Can be made as a SPA.
+ ✅   - SIGN IN/LOGIN - A simple page that redirects somewhere. Can be made as a SPA.
     - SIGN OUT/LOUGOUT - A simple page that redirects somewhere. Can be made as SPA.
-    - USE A SESSION - Can be done in the SIGN IN/LOGIN.
-    - USE A JWT - Can be done in the SESSION as a part of a cookie.
+ ✅  - USE A SESSION - Can be done in the SIGN IN/LOGIN.
+ ✅   - USE A JWT - Can be done in the SESSION as a part of a cookie.
     - CREATE TWEET - Page shouldn't reload.
     - DELETE TWEET - Page shouldn't reload.
     - UPDATE TWEET - Page shouldn't reload.

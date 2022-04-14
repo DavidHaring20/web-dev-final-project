@@ -1,6 +1,6 @@
 from bottle import post, request, response
 from services.validator import *
-from services.gmail_credentials import  gmail_address ,gmail_password
+from services.credentials import  gmail_address ,gmail_password
 from services.email import *
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -163,6 +163,10 @@ def _():
     try:
         # Connect to database
         connection = sqlite3.connect('twitter.db')
+        # Test connection
+        if not connection:
+            print("The connection couldn't be established.")
+            exit()
         # Insert new user
         counter = connection.execute("""
             INSERT INTO users
