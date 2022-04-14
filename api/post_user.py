@@ -1,10 +1,15 @@
 from bottle import post, request, response
 from services.validator import *
+from services.gmail_credentials import  gmail_address ,gmail_password
+from services.email import *
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 import sqlite3
 import uuid
 import time
 import json
 import re
+import smtplib, ssl
 
 ##################################################
 @post('/api/tweets')
@@ -173,17 +178,52 @@ def _():
         response.status = 500
         print("Exception", exception)
         data = {
-            "Exception": exception
+            "userAdded": False,
+            "emailSent": False
         }
         dataJSON = json.dumps(data)
         return dataJSON
     finally:
         connection.close()
     time.sleep(1)
-    # On success redirect
+    # ON SUCCESS, SEND EMAIL AND RETURN DATA
+    # Get gmail credentials
+    sender_email = gmail_address
+    receiver_email = user_email
+    password = gmail_password
+
+    # Create mail header
+    message = MIMEMultipart('alternative')
+    message['Subject'] = 'Welcome to Twitter'
+    message['From'] = sender_email 
+    message['To'] = receiver_email
+
+    # Create mail body
+    plaintext_mail = build_plaintext_mail()
+    html_mail = build_html_mail()
+    part_1 = MIMEText(plaintext_mail, 'plain')
+    part_2 = MIMEText(html_mail, 'html')
+    message.attach(part_1)
+    message.attach(part_2)
+
+    # Create secure connection with server and send email
+    context = ssl.create_default_context()
+    print(sender_email)
+    print(password)
+    print(receiver_email)
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        try:
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message.as_string())
+            email_sent = True
+        except Exception as exception:
+            email_sent = False
+            print(exception)
+    # Success
+    response.status = 200
     data = {
-        "user_added": True,
-        # "email_sent:" 
+        "userAdded": True,
+        "emailSent": email_sent
     }
     dataJSON = json.dumps(data)
     # Return JSON   

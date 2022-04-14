@@ -11,7 +11,7 @@ NECESSARY REQUIREMENTS FOR SYSTEM:
 
 NECESSARY FUNCTIONALITIES FOR APPLICATION:
     - Every part should try to be a SPA.
-    - SING UP/REGISTER - A simple page that redirects somewhere. Can be made as a SPA.
+ ✅    - SING UP/REGISTER - A simple page that redirects somewhere. Can be made as a SPA.
     - SIGN IN/LOGIN - A simple page that redirects somewhere. Can be made as a SPA.
     - SIGN OUT/LOUGOUT - A simple page that redirects somewhere. Can be made as SPA.
     - USE A SESSION - Can be done in the SIGN IN/LOGIN.
@@ -29,4 +29,4 @@ NECESSARY FUNCTIONALITIES FOR APPLICATION:
 
 OPTIONAL FUNCTIONALITIES FOR APPLICATION:
     - FOLLOW SOMEONE - Page shouldn't reload.
-    - SEND AN EMAIL WHEN THE USER SIGNS UP
+ ✅     - SEND AN EMAIL WHEN THE USER SIGNS UP
