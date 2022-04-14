@@ -132,11 +132,59 @@ def _():
     if not request.forms.get('password') == request.forms.get('password-retype'):
         response.status = 400
         return f"password and password-retype are not matching"
-    # Get data from form
-
-    # Connect to database
-
-    # Insert new user
-
+    # GET DATA FROM FORM AND CREATE USER DICTIONARY
+    user_id = str(uuid.uuid4())
+    user_first_name = request.forms.get('first-name')
+    user_middle_name = request.forms.get('middle-name') or ''
+    user_last_name = request.forms.get('last-name')
+    user_address = request.forms.get('address')
+    user_age = request.forms.get('age')
+    user_username = request.forms.get('username')
+    user_email = request.forms.get('email')
+    user_password = request.forms.get('password')
+    # Create user dictionary
+    user = {
+        'user_id': user_id,
+        'user_first_name': user_first_name,
+        'user_middle_name': user_middle_name,
+        'user_last_name': user_last_name,
+        'user_address': user_address,
+        'user_age': user_age,
+        'user_username': user_username,
+        'user_email': user_email,
+        'user_password': user_password,
+        'user_role': 'user'
+    }
+    try:
+        # Connect to database
+        connection = sqlite3.connect('twitter.db')
+        # Insert new user
+        counter = connection.execute("""
+            INSERT INTO users
+            VALUES (:user_id, :user_first_name, :user_middle_name, :user_last_name, :user_address, 
+                :user_age, :user_username, :user_email, :user_password, :user_role)
+        """, user).rowcount
+        connection.commit()
+        if not counter:
+            print("No user has been inserted.")
+            exit()
+        print(f"User has been inserted.")
+    except Exception as exception:
+        response.status = 500
+        print("Exception", exception)
+        data = {
+            "Exception": exception
+        }
+        dataJSON = json.dumps(data)
+        return dataJSON
+    finally:
+        connection.close()
+    time.sleep(1)
+    # On success redirect
+    data = {
+        "user_added": True,
+        # "email_sent:" 
+    }
+    dataJSON = json.dumps(data)
     # Return JSON   
-    return "success"
+    return dataJSON
