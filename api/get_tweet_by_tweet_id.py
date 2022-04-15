@@ -1,5 +1,5 @@
 from bottle import get, response
-from services.dictionary_factory import dictionary_factory
+from services.dictionary_factory import dictionary_factory_JSON
 import sqlite3
 import time
 import json
@@ -30,7 +30,7 @@ def _(user_id ,tweet_id):
             print("The connection couldn't be established.")
             exit()
         # Set custom dictionary factory 
-        connection.row_factory = dictionary_factory
+        connection.row_factory = dictionary_factory_JSON
         # Get tweet
         tweet = connection.execute("""
             SELECT * FROM tweets

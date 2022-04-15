@@ -1,5 +1,5 @@
 from bottle import post, request, response
-from services.validator import EMAIL_REGEX, EMAIL_MAX_LEN, EMAIL_MIN_LEN, PASSWORD_REGEX, PASSWORD_MIN_LEN, PASSWORD_MAX_LEN
+from services.validator_user import EMAIL_REGEX, EMAIL_MAX_LEN, EMAIL_MIN_LEN, PASSWORD_REGEX, PASSWORD_MIN_LEN, PASSWORD_MAX_LEN
 from services.credentials import secret_key
 import re
 import time
