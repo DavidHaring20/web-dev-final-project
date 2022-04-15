@@ -4,8 +4,6 @@ from bottle import run, static_file, get
 # Api
 import api.post_user
 import api.post_session
-import api.get_tweet_by_user_id
-import api.get_tweet_by_tweet_id
 
 ##################################################
 @get('/app.css')
