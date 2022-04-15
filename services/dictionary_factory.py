@@ -5,4 +5,3 @@ def dictionary_factory(cursor, row):
     for index, column in enumerate(cursor.description):
         dictionary[column[0]] = row[index]
     return dictionary
-
