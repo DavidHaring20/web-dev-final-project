@@ -19,7 +19,7 @@ def createFakeTweets(user_ids):
         {
             "tweet_title": fake.sentence(nb_words=6, variable_nb_words=True), 
             "tweet_description": fake.paragraph(nb_sentences=4, variable_nb_sentences=True),
-            "tweet_image_url": f"/images/{fake.word()}_{fake.word}.{fake.file_extension(category='image')}",
+            "tweet_image_url": f"/images/{fake.word()}_{fake.word()}.{fake.file_extension(category='image')}",
             "tweet_created_at": f"{fake.day_of_month()} {fake.month()} 2022 {fake.time()}",
             "tweet_updated_at": f"{fake.day_of_month()} {fake.month()} 2022 {fake.time()}",
             "user_id": random.choice(user_ids),
