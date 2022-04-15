@@ -1,0 +1,9 @@
+USER_ID_REGEX = '^[a-zA-Z0-9\-]*$'              # ee21af4e-cb0a-4a23-a214-ca5bd4cc90bd, d50aff9a-8c88-4805-9e78-41738a9934c7
+USER_ID_LEN = 36
+TEXT_REGEX = '^[A-Za-z\s\.\,\!\?\'\(\)]*$'
+TITLE_MIN_LEN = 10
+TITLE_MAX_LEN = 40
+DESCRIPTION_MIN_LEN = 20
+DESCRIPTION_MAX_LEN = 400
+IMAGE_NAME_REGEX = '^[A-Za-z0-9\_\-\.]*$'       # relate_person11.gif, tree_nice.jpg
+IMAGE_EXTENSIONS = ['.jpeg', '.jpg', '.png']
