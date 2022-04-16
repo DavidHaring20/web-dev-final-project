@@ -6,4 +6,6 @@ TITLE_MAX_LEN = 40
 DESCRIPTION_MIN_LEN = 20
 DESCRIPTION_MAX_LEN = 400
 IMAGE_NAME_REGEX = '^[A-Za-z0-9\_\-\.]*$'       # relate_person11.gif, tree_nice.jpg
+IMAGE_NAME_MIN_LEN = 5
+IMAGE_NAME_MAX_LEN = 20
 IMAGE_EXTENSIONS = ['.jpeg', '.jpg', '.png']

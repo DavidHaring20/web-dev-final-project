@@ -2,11 +2,14 @@ from bottle import post, request, response
 from services.validator_tweet import *
 from services.date import get_date_time
 from services.dictionary_factory import dictionary_factory_JSON
+from services.directories import IMAGES_DIRECTORY
 import sqlite3
 import time
 import json
 import os
 import re
+import imghdr
+import uuid
 
 ##################################################
 @post('/api/tweets')
@@ -61,18 +64,48 @@ def _():
         'user_id': user_id,
     }
     # Image
-    # if request.forms.get(''):
-    #     response.status = 400
-    #     return ""
-    # if not re.match(, request.forms.get().strip()):
-    #     response.status = 400
-    #     return ""
-    # if not len(request.forms.get('').strip()) <:
-    #     response.status = 400
-    #     return ""
-    # if not len(request.forms.get('').strip()) >:
-    #     response.status = 400
-    #     return ""
+    if request.files.get('image'):
+        # Image
+        if not request.files.get('image'):
+            response.status = 400
+            return "image is missing"
+        # Get image from form and get file_name and file_extension from image
+        image = request.files.get('image')
+        file_name, file_extension = os.path.splitext(image.filename)
+        # File extension
+        if file_extension not in IMAGE_EXTENSIONS:
+            response.status = 400
+            return f"file is not of type {IMAGE_EXTENSIONS}"
+        # Image Name
+        if not re.match(IMAGE_NAME_REGEX, file_name.strip()):
+            response.status = 400
+            return "image-name can contain only uppercase and lowercase letters, numbers these special characters: \".\", \"_\" and \"-\"."
+        if len(file_name.strip()) < IMAGE_NAME_MIN_LEN:
+            response.status = 400
+            return f"image-name must contain at least {IMAGE_NAME_MIN_LEN} characters"
+        if len(file_name.strip()) > IMAGE_NAME_MAX_LEN:
+            response.status = 400
+            return f"image-name must contain less than {IMAGE_NAME_MAX_LEN} characters"
+        # Success
+        # Create name for image
+        image_id = str(uuid.uuid4())
+        image_name = f"{image_id}{file_extension}"
+        # Check if there is a directory where system will store images
+        if not os.path.exists(IMAGES_DIRECTORY):
+            os.mkdir(IMAGES_DIRECTORY)
+
+        # Save image with new generated name
+        image.save(f"{IMAGES_DIRECTORY}/{image_name}")
+        print("Image saved.")
+
+        # Check the image validity
+        imghdr_extension = imghdr.what(f"{IMAGES_DIRECTORY}/{image_name}")
+        if file_extension != f".{imghdr_extension}":
+            # Delete image
+            os.remove(f"{IMAGES_DIRECTORY}/{image_name}")
+            print("Image deleted due to being invalid.")
+        # Sucess
+        tweet['tweet_image_url'] = image_name
     # INSERT NEW TWEET INTO DATABASE
     try:
         # Create connection
