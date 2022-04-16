@@ -2,7 +2,7 @@ from operator import concat
 from bottle import route, request, response
 from services.validator_tweet import *
 from services.date import get_date_time
-from services.dictionary_factory import dictionary_factory_JSON
+from services.dictionary_factory import dictionary_factory, dictionary_factory_JSON
 from services.directories import IMAGES_DIRECTORY
 import sqlite3
 import time
@@ -135,6 +135,16 @@ def _(tweet_id):
             exit() 
         # See if the user added new photo
         if 'tweet_image_url' in tweet:
+            # Use custom dictionary factory
+            connection.row_factory = dictionary_factory
+            # Get name of the old image
+            pre_update_image = connection.execute("""
+                SELECT tweet_image_url FROM tweets
+                WHERE 
+                    tweet_id = :tweet_id AND
+                    user_id = :user_id
+            """, tweet).fetchone()
+            pre_update_image_name = pre_update_image['tweet_image_url']
             # Query with new image
             counter = connection.execute("""
             UPDATE tweets
@@ -167,6 +177,10 @@ def _(tweet_id):
             }
             dataJSON = json.dumps(data)
             return dataJSON
+        # On success delete old picture
+        if os.path.exists(f"{IMAGES_DIRECTORY}/{pre_update_image_name}"):
+            os.remove(f"{IMAGES_DIRECTORY}/{pre_update_image_name}")
+            print("Tweet's old image deleted.")
         print("Tweet has been updated.")
         # Create filter for searching for new tweet
         filter = {
