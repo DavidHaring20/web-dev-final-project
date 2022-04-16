@@ -19,9 +19,9 @@ NECESSARY FUNCTIONALITIES FOR APPLICATION:
  ✅ - CREATE TWEET - Page shouldn't reload.
  ✅ - DELETE TWEET - Page shouldn't reload.
  ✅ - UPDATE TWEET - Page shouldn't reload.
-    - SEE TWEETS FROM OTHER USERS - A simple page that may or may not be a SPA.
-    - LIKE TWEET 
-    - UNLIKE TWEET
+ ✅ - SEE TWEETS FROM OTHER USERS - A simple page that may or may not be a SPA.
+ ✅ - LIKE TWEET 
+ ✅ - UNLIKE TWEET
     - ADMIN PANEL - This is a "stand-alone" feature. This means that it doesn't 
         have to be part of the twitter application, but can be a whole different solution. 
         The administrator can see all tweets and delete them if wanted. It is a SPA, 

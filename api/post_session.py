@@ -77,7 +77,7 @@ def _():
                 "login": False
             }
             dataJSON = json.dumps(data)
-            return data
+            return dataJSON
         print("User added to session.")
     except Exception as exception:
         response.status = 500

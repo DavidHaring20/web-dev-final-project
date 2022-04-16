@@ -9,10 +9,20 @@ import json
 import re
 
 ##################################################
-@delete('/api/tweets/<tweet_id>')
-def _(tweet_id):
+@delete('/api/tweets/user/<user_id>/tweet/<tweet_id>')
+def _(user_id, tweet_id):
     # VALIDATION
-    # Tweet Id
+    # user_id
+    if not user_id:
+        response.status = 400
+        return "user-id is missing"
+    if not re.match(USER_ID_REGEX, user_id):
+        response.status = 400
+        return "user-id should contain only characters, digits and hyphens(-)"
+    if not len(user_id) == USER_ID_LEN:
+        response.status = 400
+        return f"user-id should have {USER_ID_LEN} characters"
+    # tweet_id
     if not tweet_id:
         response.status = 400
         return "tweet_id is missing"
@@ -22,16 +32,6 @@ def _(tweet_id):
     if not int(tweet_id) > 0:
         response.status = 400
         return "tweet id must be a positive number"
-    # User Id
-    if not request.forms.get('user-id'):
-        response.status = 400
-        return "user-id is missing"
-    if not re.match(USER_ID_REGEX, request.forms.get('user-id').strip()):
-        response.status = 400
-        return "user-id should contain only characters, digits and hyphens(-)"
-    if not len(request.forms.get('user-id').strip()) == USER_ID_LEN:
-        response.status = 400
-        return f"user-id should have {USER_ID_LEN} characters"
     # Get data from form
     user_id = request.forms.get('user-id')
     # Create filter for deleting tweet
