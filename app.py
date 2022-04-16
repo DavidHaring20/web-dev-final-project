@@ -2,6 +2,7 @@ from bottle import run, static_file, get
 
 ##################################################
 # Api
+import api.get_tweet_admin
 import api.get_tweet_by_tweet_id
 import api.get_tweet_by_user_id
 import api.post_user
