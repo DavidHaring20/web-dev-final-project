@@ -1,8 +1,10 @@
 from bottle import get, response
 from services.dictionary_factory import dictionary_factory_JSON
+from services.validator_tweet import USER_ID_REGEX, USER_ID_LEN, TWEET_ID_REGEX
 import sqlite3
 import time
 import json
+import re
 
 ##################################################
 @get('/api/tweets/user/<user_id>/tweet/<tweet_id>')
@@ -12,10 +14,22 @@ def _(user_id ,tweet_id):
     if not user_id:
         response.status = 400
         return "user_id is missing"
+    if not re.match(USER_ID_REGEX, user_id):
+        response.status = 400
+        return "user-id should contain only characters, digits and hyphens(-)"
+    if not len(user_id) == USER_ID_LEN:
+        response.status = 400
+        return f"user-id should have {USER_ID_LEN} characters"
     # tweet_id
     if not tweet_id:
         response.status = 400
         return "tweet_id is missing"
+    if not re.match(TWEET_ID_REGEX, tweet_id):
+        response.status = 400
+        return "tweet id must be a positive number and can contain only integers"
+    if not int(tweet_id) > 0:
+        response.status = 400
+        return "tweet id must be a positive number"
     # Create filter
     filter = {
         "user_id": user_id,

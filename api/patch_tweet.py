@@ -23,7 +23,7 @@ def _(tweet_id):
         return "tweet_id is missing"
     if not re.match(TWEET_ID_REGEX, tweet_id):
         response.status = 400
-        return "tweet id must be a positivie number and can contain only integers"
+        return "tweet id must be a positive number and can contain only integers"
     if not int(tweet_id) > 0:
         response.status = 400
         return "tweet id must be a positive number"
@@ -195,7 +195,7 @@ def _(tweet_id):
         print("Exception", exception)
     finally:
         connection.close()
-    time.sleep(2)
+    time.sleep(1)
     data = {
         'tweetUpdated': True,
         'tweet': updated_tweet 

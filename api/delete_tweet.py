@@ -1,5 +1,5 @@
 from bottle import delete, request, response
-from services.validator_tweet import USER_ID_REGEX, USER_ID_LEN
+from services.validator_tweet import USER_ID_REGEX, USER_ID_LEN, TWEET_ID_REGEX
 import sqlite3 
 import time
 import json
@@ -13,6 +13,12 @@ def _(tweet_id):
     if not tweet_id:
         response.status = 400
         return "tweet_id is missing"
+    if not re.match(TWEET_ID_REGEX, tweet_id):
+        response.status = 400
+        return "tweet id must be a positive number and can contain only integers"
+    if not int(tweet_id) > 0:
+        response.status = 400
+        return "tweet id must be a positive number"
     # User Id
     if not request.forms.get('user-id'):
         response.status = 400
