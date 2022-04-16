@@ -1,3 +1,4 @@
+TWEET_ID_REGEX = '^[0-9]+$'                     # 1, 65, 53353
 USER_ID_REGEX = '^[a-zA-Z0-9\-]*$'              # ee21af4e-cb0a-4a23-a214-ca5bd4cc90bd, d50aff9a-8c88-4805-9e78-41738a9934c7
 USER_ID_LEN = 36
 TEXT_REGEX = '^[A-Za-z\s\.\,\!\?\'\(\)]*$'

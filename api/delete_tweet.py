@@ -9,9 +9,11 @@ import re
 @delete('/api/tweets/<tweet_id>')
 def _(tweet_id):
     # VALIDATION
+    # Tweet Id
     if not tweet_id:
         response.status = 400
         return "tweet_id is missing"
+    # User Id
     if not request.forms.get('user-id'):
         response.status = 400
         return "user-id is missing"

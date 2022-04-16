@@ -8,6 +8,7 @@ import api.delete_session
 import api.get_tweet_by_tweet_id
 import api.get_tweet_by_user_id
 import api.post_tweet
+import api.patch_tweet
 import api.delete_tweet
 
 ##################################################

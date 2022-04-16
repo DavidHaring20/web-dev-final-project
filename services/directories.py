@@ -1,1 +1,1 @@
-IMAGES_DIRECTORY = '/images'
+IMAGES_DIRECTORY = 'images'
