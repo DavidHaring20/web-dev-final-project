@@ -1,0 +1,87 @@
+:root{
+    --blue:             #1DA1F2;
+    --black:            #14171A;
+    --darkgray:         #657786;
+    --lightgray:        #AAB8C2;
+    --extralightgray:   #E1E8ED; 
+}
+
+.landing-page-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.landing-page-right-side {
+    margin-left: 5rem;
+}
+
+.landing-page-right-side-logo {
+    margin: 5rem 5rem 0 0;
+}
+
+.landing-page-right-side-headers-h1 {
+    margin: 5rem 0;
+    font-size: 4rem;
+}
+
+.landing-page-right-side-headers-h2 {
+    font-size: 2.1rem;
+    margin-bottom: 4rem;
+}
+
+.create-account-button {
+    width: 50%; 
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--blue);
+    padding: 0.8rem 4rem;
+    border-radius: 2rem;
+    border: 2px solid var(--blue);
+    cursor: pointer;
+}
+
+.landing-page-right-side-p {
+    margin: 0.5rem 0;
+    width: 50%;
+    color: var(--darkgray);
+    font-size: 0.8rem;
+}
+
+.landing-page-right-side-p > a {
+    text-decoration: none;
+}
+
+.landing-page-right-side-h3 {
+    font-size: 1.2rem;
+    margin: 6rem 0 2rem 0;
+}
+
+.login-button {
+    width: 50%; 
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--blue);
+    background-color: white;
+    padding: 0.8rem 4rem;
+    border-radius: 2rem;
+    border: 1px solid var(--lightgray);
+    cursor: pointer;
+}
+
+.landing-page-footer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+.landing-page-footer > a,.landing-page-footer > span  {
+    text-decoration: none;
+    color: var(--darkgray);
+    font-size: 0.85rem;
+}
+
+.landing-page-footer > a:hover {
+    text-decoration: underline;
+}

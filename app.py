@@ -1,4 +1,4 @@
-from bottle import run, static_file, get
+from bottle import run
 
 ##################################################
 # Api
@@ -18,17 +18,11 @@ import api.delete_like
 import api.delete_follow
 
 ##################################################
-@get('/app.css')
-def _():
-    return static_file('app.css', root='./stylesheets')
-
-@get('/app.js')
-def _():
-    return static_file('app.js', root='.')
-
-@get('/images/<image_name>')
-def _(image_name):
-    return static_file(image_name, root='./images')
+# File loaders
+import loaders.html_loader
+import loaders.js_loader
+import loaders.css_loader
+import loaders.image_loader
 
 ##################################################
 run(host='localhost', port='8080', reloader=True, debug=True)

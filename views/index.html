@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/app.css">
+    <link rel="stylesheet" href="/landing-page.css">
+    <title>Twitter</title>
+</head>
+<body>
+    <main>
+        <!-- Landing Page -->
+        <div id="landing-page" class="landing-page">
+            <div class="landing-page-content">
+                <!-- Left side -->
+                <div class="langing-page-right-side">
+                    <img src="/illustrations/twitter-landing.png" alt="Twitter landing page">
+                </div>
+                
+                <!-- Right side -->
+                <div class="landing-page-right-side">
+                    <div class="landing-page-right-side-logo">
+                        <img src="/illustrations/twitter-logo.png" alt="Twitter Logo">
+                    </div>
+                    
+                    <div class="landing-page-right-side-headers">
+                        <h1 class="landing-page-right-side-headers-h1">Happening now</h1>
+                        <h2 class="landing-page-right-side-headers-h2">Join Twitter today.</h3>
+                    </div>
+
+                    <button onclick="goToSignup()" class="create-account-button">Create account</button>
+
+                    <p class="landing-page-right-side-p">
+                        By signing up, you agree to the <a href="#">Terms of Service</a> 
+                        and <a href="">Privacy Policy</a>, including <a href="#">Cookie Use</a>.
+                    </p>
+
+                    <h3 class="landing-page-right-side-h3">Already have an account ?</h3>
+                    
+                    <button onclick="goToLogin()" class="login-button">Log In</button>
+                   
+                </div>
+            </div>
+
+            <footer class="landing-page-footer">
+                <a href="">About</a> 
+                <a href="">Help Center</a>
+                <a href="#">Terms of Service</a>  
+                <a href="#">Privacy Policy</a>  
+                <a href="#">Cookie Policy</a>  
+                <a href="#">Accessibility</a>  
+                <a href="#">Ads info</a>  
+                <a href="#">Blog</a>  
+                <a href="#">Status</a>  
+                <a href="#">Careers</a>  
+                <a href="#">Brand Resources</a>  
+                <a href="#">Advertising</a>  
+                <a href="#">Marketing</a>  
+                <a href="#">Twitter for Business</a>  
+                <a href="#">Developers</a>  
+                <a href="#">Directory</a>  
+                <a href="#">Settings</a>  
+                <span>
+                    © 2022 Twitter, Inc.
+                </span>
+            </footer>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login-page" class="login-page">
+            <div class="login-form">
+                <div class="email-div">
+                    <p class="email-p">Email</p>
+                    <input type="text" class="email-input" id="email" name="email">
+                </div>
+
+                <div class="password-div">
+                    <p class="password-p">Password</p>
+                    <input type="password" class="password-input" id="password" name="password">
+                </div>
+
+                <button type="submit" id="submit-login">Log In</button>
+            </div>
+        </div>
+
+        <!-- Signup Page -->
+        <div id="signup-page" class="signup-page">
+            <h1>Signup</h1>
+        </div>
+
+        <!-- Home Page -->
+        <div id="home-page" class="home-page">
+            <h1>Home</h1>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/navigation.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>
