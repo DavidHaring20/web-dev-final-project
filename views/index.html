@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/app.css">
     <link rel="stylesheet" href="/landing-page.css">
     <link rel="stylesheet" href="/signup-modal.css">
@@ -18,8 +19,9 @@
         <div id="signup-modal" class="signup-modal">
             <div class="signup-modal-top-section">
                 <!-- Exit modal -->
-
+                <i class="fa fa-close"></i>
                 <!-- Twitter logo -->
+                <img src="/illustrations/twitter-logo.png" alt="Twitter logo">
             </div>
             
 
@@ -27,60 +29,87 @@
                 <h1>Signup</h1>
             </div>
 
+            <!-- Error message -->
+            <div>
+                <p class="signup-error-message"></p>
+            </div>
+
             <!-- Signup Form -->
             <div class="signup-modal-form">
-                <!-- First name -->
-                <div class="signup-modal-form-first-name">
-                    <p class="signup-modal-form-first-name-p">First name</p>
-                    <input type="text" class="signup-modal-form-first-name-input"> 
+                <div class="signup-modal-form-page-1">
+                    <!-- First name -->
+                    <div class="signup-modal-form-first-name">
+                        <p class="signup-modal-form-first-name-p">First name</p>
+                        <input type="text" class="signup-modal-form-first-name-input"> 
+                    </div>
+
+                    <!-- Middle name -->
+                    <div class="signup-modal-form-middle-name">
+                        <p class="signup-modal-form-middle-name-p">Middle name</p>
+                        <input type="text" class="signup-modal-form-middle-name-input">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="signup-modal-form-last-name">
+                        <p class="signup-modal-form-last-name-p">Last name</p>
+                        <input type="text" class="signup-modal-form-last-name-input">
+                    </div>
+
+                    <!-- Navigation buttons -->
+                    <div class="signup-modal-form-buttons">
+                        <button onclick="toPage2()">Next Page</button>
+                    </div>
                 </div>
 
-                <!-- Middle name -->
-                <div class="signup-modal-form-middle-name">
-                    <p class="signup-modal-form-middle-name-p">Middle name</p>
-                    <input type="text" class="signup-modal-form-middle-name-input">
+                <div class="signup-modal-form-page-2">
+                    <!-- Address -->
+                    <div class="signup-modal-form-address">
+                        <p class="signup-modal-form-address-p">Address</p>
+                        <input type="text" class="signup-modal-form-address-input">
+                    </div>
+
+                    <!-- Age -->
+                    <div class="signup-modal-form-age">
+                        <p class="signup-modal-form-age-p">Age</p>
+                        <input type="text" class="signup-modal-form-age-input">
+                    </div>
+
+                    <!-- Username -->
+                    <div class="signup-modal-form-username">
+                        <p class="signup-modal-form-username-p">Username</p>
+                        <input type="text" class="signup-modal-form-username-input">
+                    </div>
+
+                    <!-- Navigation buttons -->
+                    <div class="signup-modal-form-buttons">
+                        <button onclick="toPage1()">Previous Page</button>
+                        <button onclick="toPage3()">Next Page</button>
+                    </div>
                 </div>
 
-                <!-- Last Name -->
-                <div class="signup-modal-form-last-name">
-                    <p class="signup-modal-form-last-name-p">Last name</p>
-                    <input type="text" class="signup-modal-form-last-name-input">
-                </div>
-
-                <!-- Address -->
-                <div class="signup-modal-form-address">
-                    <p class="signup-modal-form-address-p">Address</p>
-                    <input type="text" class="signup-modal-form-address-input">
-                </div>
-
-                <!-- Age -->
-                <div class="signup-modal-form-age">
-                    <p class="signup-modal-form-age-p">Age</p>
-                    <input type="text" class="signup-modal-form-age-input">
-                </div>
-
-                <!-- Username -->
-                <div class="signup-modal-form-username">
-                    <p class="signup-modal-form-username-p">Username</p>
-                    <input type="text" class="signup-modal-form-username-input">
-                </div>
-
-                <!-- Email -->
-                <div class="signup-modal-form-email">
-                    <p class="signup-modal-form-email-p">Email</p>
-                    <input type="email" class="signup-modal-form-email-input">
-                </div>
-
-                <!-- Password -->
-                <div class="signup-modal-form-password">
-                    <p class="signup-modal-form-password-p">Password</p>
-                    <input type="password" class="signup-modal-form-password-input">
-                </div>
-
-                <!-- Password Retype -->
-                <div class="signup-modal-form-retype-password">
-                    <p class="signup-modal-form-retype-password-p">Retype password</p>
-                    <input type="password" class="signup-modal-form-retype-password-input">
+                <div class="signup-modal-form-page-3">
+                    <!-- Email -->
+                    <div class="signup-modal-form-email">
+                        <p class="signup-modal-form-email-p">Email</p>
+                        <input type="email" class="signup-modal-form-email-input">
+                    </div>
+                    
+                    <!-- Password -->
+                    <div class="signup-modal-form-password">
+                        <p class="signup-modal-form-password-p">Password</p>
+                        <input type="password" class="signup-modal-form-password-input">
+                    </div>
+                    
+                    <!-- Password Retype -->
+                    <div class="signup-modal-form-retype-password">
+                        <p class="signup-modal-form-retype-password-p">Retype password</p>
+                        <input type="password" class="signup-modal-form-retype-password-input">
+                    </div>
+                    
+                    <!-- Navigation buttons -->
+                    <div class="signup-modal-form-buttons">
+                        <button onclick="toPage2()">Previous Page</button>
+                    </div>
                 </div>
 
                 <button id="submit-signup">Sign up</button>
@@ -170,6 +199,7 @@
 
     <!-- Scripts -->
     <script src="/navigation.js"></script>
+    <script src="/signup.js"></script>
     <script src="/app.js"></script>
 </body>
 </html>
