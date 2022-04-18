@@ -12,7 +12,7 @@ import re
 import smtplib, ssl
 
 ##################################################
-@post('/api/tweets')
+@post('/api/users')
 def _():
     # VALIDATE
     # First name

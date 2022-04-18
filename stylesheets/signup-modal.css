@@ -1,0 +1,25 @@
+:root{
+    --blue:             #1DA1F2;
+    --black:            #14171A;
+    --blackTransparent: #14171A;
+    --darkgray:         #657786;
+    --lightgray:        #AAB8C2;
+    --extralightgray:   #E1E8ED; 
+}
+
+.signup-overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--blackTransparent);
+    position: absolute;
+    opacity: 60%;
+}
+.signup-modal {
+    width: 40vw;
+    height: 40vh;
+    position: absolute; 
+    background-color: white;
+    opacity: 100%;
+    top: calc(50% - 20vh);
+    left: calc(50% - 20vw);
+}

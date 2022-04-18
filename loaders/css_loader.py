@@ -9,3 +9,8 @@ def _():
 @get('/landing-page.css')
 def _():
     return static_file('landing-page.css', root='./stylesheets')
+
+##################################################
+@get('/signup-modal.css')
+def _():
+    return static_file('signup-modal.css', root='./stylesheets')

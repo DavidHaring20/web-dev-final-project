@@ -2,21 +2,34 @@ console.log("navigation.js");
 // Pages
 const landingPage = document.getElementById('landing-page');
 const loginPage = document.getElementById('login-page');
-const signupPage = document.getElementById('signup-page');
 const homePage = document.getElementById('home-page');
 
-// Hide all other pages
+// Modals
+const signupLogin = document.getElementById('signup-modal');
+
+// Overlays
+const darkOverlay = document.getElementById('signup-overlay');
+
+// Hide all other pages and modals
 loginPage.classList.add('hidden');
-signupPage.classList.add('hidden');
 homePage.classList.add('hidden');
+darkOverlay.classList.add('hidden');
+signupLogin.classList.add('hidden');
 
 
 // Go to Signup Page
 function goToSignup() {
-    // From Landing Page
-    if (!landingPage.classList.contains('hidden'))
-        landingPage.classList.add('hidden');
-    signupPage.classList.remove('hidden');
+    darkOverlay.classList.remove('hidden');
+    signupLogin.classList.remove('hidden');
+}
+
+// Go to Landing Page
+function goToLanding() {
+    // From Signup Page
+    if (!darkOverlay.classList.contains('hidden'))
+        darkOverlay.classList.add('hidden');
+    if (!signupLogin.classList.contains('hidden'))
+        signupLogin.classList.add('hidden');
 }
 
 // Go to Login Page

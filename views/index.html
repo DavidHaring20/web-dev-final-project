@@ -6,10 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/app.css">
     <link rel="stylesheet" href="/landing-page.css">
+    <link rel="stylesheet" href="/signup-modal.css">
     <title>Twitter</title>
 </head>
 <body>
     <main>
+        <!-- Signup Overlay -->
+        <div id="signup-overlay" class="signup-overlay">
+        </div>
+        <!-- Signup Modal -->
+        <div id="signup-modal" class="signup-modal">
+            <div class="signup-modal-top-section">
+                <!-- Exit modal -->
+
+                <!-- Twitter logo -->
+            </div>
+            
+
+            <div class="signup-modal-header">
+                <h1>Signup</h1>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="signup-modal-form">
+                <!-- First name -->
+                <div class="signup-modal-form-first-name">
+                    <p class="signup-modal-form-first-name-p">First name</p>
+                    <input type="text" class="signup-modal-form-first-name-input"> 
+                </div>
+
+                <!-- Middle name -->
+                <div class="signup-modal-form-middle-name">
+                    <p class="signup-modal-form-middle-name-p">Middle name</p>
+                    <input type="text" class="signup-modal-form-middle-name-input">
+                </div>
+
+                <!-- Last Name -->
+                <div class="signup-modal-form-last-name">
+                    <p class="signup-modal-form-last-name-p">Last name</p>
+                    <input type="text" class="signup-modal-form-last-name-input">
+                </div>
+
+                <!-- Address -->
+                <div class="signup-modal-form-address">
+                    <p class="signup-modal-form-address-p">Address</p>
+                    <input type="text" class="signup-modal-form-address-input">
+                </div>
+
+                <!-- Age -->
+                <div class="signup-modal-form-age">
+                    <p class="signup-modal-form-age-p">Age</p>
+                    <input type="text" class="signup-modal-form-age-input">
+                </div>
+
+                <!-- Username -->
+                <div class="signup-modal-form-username">
+                    <p class="signup-modal-form-username-p">Username</p>
+                    <input type="text" class="signup-modal-form-username-input">
+                </div>
+
+                <!-- Email -->
+                <div class="signup-modal-form-email">
+                    <p class="signup-modal-form-email-p">Email</p>
+                    <input type="email" class="signup-modal-form-email-input">
+                </div>
+
+                <!-- Password -->
+                <div class="signup-modal-form-password">
+                    <p class="signup-modal-form-password-p">Password</p>
+                    <input type="password" class="signup-modal-form-password-input">
+                </div>
+
+                <!-- Password Retype -->
+                <div class="signup-modal-form-retype-password">
+                    <p class="signup-modal-form-retype-password-p">Retype password</p>
+                    <input type="password" class="signup-modal-form-retype-password-input">
+                </div>
+
+                <button id="submit-signup">Sign up</button>
+            </div>
+        </div>
+        
+
         <!-- Landing Page -->
         <div id="landing-page" class="landing-page">
             <div class="landing-page-content">
@@ -70,23 +148,18 @@
         <!-- Login Page -->
         <div id="login-page" class="login-page">
             <div class="login-form">
-                <div class="email-div">
-                    <p class="email-p">Email</p>
-                    <input type="text" class="email-input" id="email" name="email">
+                <div class="login-page-email-div">
+                    <p class="login-page-email-p">Email</p>
+                    <input type="text" class="login-page-email-input" id="email">
                 </div>
 
-                <div class="password-div">
-                    <p class="password-p">Password</p>
-                    <input type="password" class="password-input" id="password" name="password">
+                <div class="login-page-password-div">
+                    <p class="login-page-password-p">Password</p>
+                    <input type="password" class="login-page-password-input" id="password">
                 </div>
 
-                <button type="submit" id="submit-login">Log In</button>
+                <button id="submit-login">Log In</button>
             </div>
-        </div>
-
-        <!-- Signup Page -->
-        <div id="signup-page" class="signup-page">
-            <h1>Signup</h1>
         </div>
 
         <!-- Home Page -->
