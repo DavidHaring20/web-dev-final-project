@@ -91,6 +91,7 @@ def _():
         'user_username': user[6],
         'user_email': user[7]
     }
+    print(user)
     # Create cookie with JWT
     jwt_encoded = jwt.encode(payload, secret_key)
     response.set_cookie('jwt', jwt_encoded)

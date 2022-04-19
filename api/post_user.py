@@ -234,7 +234,8 @@ def _():
     response.status = 200
     data = {
         "userAdded": True,
-        "emailSent": email_sent
+        "emailSent": email_sent,
+        "userRole": user[9]
     }
     dataJSON = json.dumps(data)
     # Return JSON   

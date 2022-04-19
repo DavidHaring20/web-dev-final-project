@@ -1,0 +1,83 @@
+:root{
+    --blue:             #1DA1F2;
+    --black:            #14171A;
+    --blackTransparent: #14171A;
+    --darkgray:         #657786;
+    --lightgray:        #AAB8C2;
+    --extralightgray:   #E1E8ED; 
+}
+
+.login-overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--blackTransparent);
+    position: absolute;
+    opacity: 60%;
+}
+.login-modal {
+    width: 40vw;
+    height: 48vh;
+    position: absolute; 
+    background-color: white;
+    opacity: 100%;
+    top: calc(50% - 20vh);
+    left: calc(50% - 20vw);
+    padding: 3rem 0 0 3rem;
+    border-radius: 1rem;
+}
+
+#login-exit:hover {
+    cursor: pointer;
+}
+
+.login-modal-twitter-logo {
+    margin-left: 20rem;
+}
+
+.login-form {
+    width: 35vw;
+    height: 35vh;
+    display: grid;
+    justify-content: center;
+}
+
+.login-page-email-div, 
+.login-page-password-div {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0 0 2rem;
+}
+
+.login-page-email-div > p, 
+.login-page-password-div > p {
+    margin-bottom: 1rem;
+}
+
+.login-page-email-div > input, 
+.login-page-password-div > input {
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+}
+
+.login-page-email-div > input:focus, 
+.login-page-password-div > input:focus {
+    border: 2px solid var(--blue);
+}
+
+.submit-login-div {
+    display: flex;
+    justify-content: center;
+}
+
+#submit-login {
+    width: 15vw; 
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--blue);
+    background-color: white;
+    padding: 0.8 4rem;
+    border-radius: 2rem;
+    border: 1px solid var(--lightgray);
+    cursor: pointer;
+}

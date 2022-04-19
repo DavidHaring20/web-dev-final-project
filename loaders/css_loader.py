@@ -14,3 +14,8 @@ def _():
 @get('/signup-modal.css')
 def _():
     return static_file('signup-modal.css', root='./stylesheets')
+
+##################################################
+@get('/login-modal.css')
+def _():
+    return static_file('login-modal.css', root='./stylesheets')

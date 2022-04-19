@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="/app.css">
     <link rel="stylesheet" href="/landing-page.css">
     <link rel="stylesheet" href="/signup-modal.css">
+    <link rel="stylesheet" href="/login-modal.css">
     <title>Twitter</title>
 </head>
 <body>
     <main>
         <!-- Signup Overlay -->
-        <div id="signup-overlay" class="signup-overlay">
-        </div>
+        <div id="signup-overlay" class="signup-overlay"></div>
         <!-- Signup Modal -->
         <div id="signup-modal" class="signup-modal">
             <div class="signup-modal-top-section">
@@ -126,6 +126,33 @@
             </div>
         </div>
         
+        <!-- Login Overlay -->
+        <div id="login-overlay" class="login-overlay"></div>
+        <!-- Login Modal -->
+        <div id="login-modal" class="login-modal">
+            <div class="login-modal-top-section">
+                <!-- Exit modal -->
+                <i id="login-exit" class="fa fa-close"></i>
+                <!-- Twitter logo -->
+                <img class="login-modal-twitter-logo" src="/illustrations/twitter-logo.png" alt="Twitter logo">
+            </div>
+
+            <div class="login-form">
+                <div class="login-page-email-div">
+                    <p class="login-page-email-p">Email</p>
+                    <input type="text" class="login-page-email-input" id="email">
+                </div>
+
+                <div class="login-page-password-div">
+                    <p class="login-page-password-p">Password</p>
+                    <input type="password" class="login-page-password-input" id="password">
+                </div>
+
+                <div class="submit-login-div">
+                    <button id="submit-login">Log In</button>
+                </div>
+            </div>
+        </div>
 
         <!-- Landing Page -->
         <div id="landing-page" class="landing-page">
@@ -184,22 +211,7 @@
             </footer>
         </div>
 
-        <!-- Login Page -->
-        <div id="login-page" class="login-page">
-            <div class="login-form">
-                <div class="login-page-email-div">
-                    <p class="login-page-email-p">Email</p>
-                    <input type="text" class="login-page-email-input" id="email">
-                </div>
-
-                <div class="login-page-password-div">
-                    <p class="login-page-password-p">Password</p>
-                    <input type="password" class="login-page-password-input" id="password">
-                </div>
-
-                <button id="submit-login">Log In</button>
-            </div>
-        </div>
+        
 
         <!-- Home Page -->
         <div id="home-page" class="home-page">
@@ -211,5 +223,6 @@
     <script src="/navigation.js"></script>
     <script src="/signup.js"></script>
     <script src="/app.js"></script>
+    <script src="/login.js"></script>
 </body>
 </html>

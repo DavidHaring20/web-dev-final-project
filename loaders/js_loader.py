@@ -10,7 +10,12 @@ def _():
 def _():
     return static_file('navigation.js', root='./js')
 
-    ##################################################
+##################################################
 @get('/signup.js')
 def _():
     return static_file('signup.js', root='./js')
+
+##################################################
+@get('/login.js')
+def _():
+    return static_file('login.js', root='./js')
