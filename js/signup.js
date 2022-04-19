@@ -45,6 +45,8 @@ function toPage3() {
 /////////////////////////////////////////////////
 // Signup
 signupSubmitButton.addEventListener('click', () => {
+    signupSubmitButton.disabled = true;
+    signupSubmitButton.innerText = 'Please wait';
     // Create form data
     const form = new FormData();
     // Get data from form and append it to form data
@@ -73,11 +75,14 @@ async function signup(form) {
         // OK 200
         if (data.userAdded) {
             goToLanding();
+            signupErrorMessage.innerText = '';
         }
         // 40x and 50x
         if (data.errorMessage) {
             signupErrorMessage.innerText = data.errorMessage;
         }
+        signupSubmitButton.disabled = false;
+        signupSubmitButton.innerText = 'Sign up';
     })
     .catch((error) => {
         console.log("Error", error);

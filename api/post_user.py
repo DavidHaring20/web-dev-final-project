@@ -192,9 +192,9 @@ def _():
             "exception": str(exception)
         }
         if ('user_email' in str(exception)):
-            data["exception"] = "There is already user with that e-mail."
+            data["errorMessage"] = "There is already user with that e-mail."
         elif ('user_username' in str(exception)):
-            data["exception"] = "There is already user with that username."
+            data["errorMessage"] = "There is already user with that username."
         dataJSON = json.dumps(data)
         return dataJSON
     finally:

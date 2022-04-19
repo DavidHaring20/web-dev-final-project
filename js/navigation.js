@@ -4,6 +4,9 @@ const landingPage = document.getElementById('landing-page');
 const loginPage = document.getElementById('login-page');
 const homePage = document.getElementById('home-page');
 
+// Buttons
+const signupExitButton = document.getElementById('signup-exit');
+
 // Modals
 const signupLogin = document.getElementById('signup-modal');
 
@@ -30,7 +33,7 @@ function goToLanding() {
         darkOverlay.classList.add('hidden');
     if (!signupLogin.classList.contains('hidden'))
         signupLogin.classList.add('hidden');
-}
+};
 
 // Go to Login Page
 function goToLogin() {
@@ -48,3 +51,8 @@ function goToHome () {
         loginPage.classList.add('hidden');
     homePage.classList.remove('hidden');
 }
+
+// Methods
+signupExitButton.addEventListener('click', () => {
+    goToLanding();
+});

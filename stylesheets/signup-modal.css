@@ -16,10 +16,95 @@
 }
 .signup-modal {
     width: 40vw;
-    height: 40vh;
+    height: 48vh;
     position: absolute; 
     background-color: white;
     opacity: 100%;
     top: calc(50% - 20vh);
     left: calc(50% - 20vw);
+    padding: 3rem 0 0 3rem;
+}
+#signup-exit:hover {
+    cursor: pointer;
+}
+
+.singup-modal-twitter-logo {
+    margin-left: 20rem;
+}
+
+.signup-modal-header {
+    margin: 2rem 0 1rem 0;
+}
+
+.signup-error-message {
+    font-weight: 700;
+    color: red;
+    margin: 2rem 0
+}
+
+.signup-modal-form-page-1-form, 
+.signup-modal-form-page-2-form,
+.signup-modal-form-page-3-form  {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+.signup-modal-form-buttons, .submit-signup-div {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.extra-space {
+    gap: 2rem;
+}
+
+.signup-modal-form-buttons-button {
+    width: 50%; 
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--blue);
+    padding: 0.8rem 4rem;
+    border-radius: 2rem;
+    border: 2px solid var(--blue);
+    cursor: pointer;
+}
+
+.signup-modal-form-page-1-form > div > p,
+.signup-modal-form-page-2-form > div > p,
+.signup-modal-form-page-3-form > div > p {
+    margin-bottom: 1rem;
+}
+
+.signup-modal-form-page-1-form > div > input,
+.signup-modal-form-page-2-form > div > input,
+.signup-modal-form-page-3-form > div > input {
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+}
+
+.signup-modal-form-page-1-form > div > input:focus, 
+.signup-modal-form-page-2-form > div > input:focus,
+.signup-modal-form-page-3-form > div > input:focus {
+    border: 2px solid var(--blue);
+}
+
+.submit-signup-div-margin-top {
+    margin-top: 2rem;
+}
+
+.submit-signup-button {
+    width: 50%; 
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--blue);
+    background-color: white;
+    padding: 0.8rem 4rem;
+    border-radius: 2rem;
+    border: 1px solid var(--lightgray);
+    cursor: pointer;
 }
