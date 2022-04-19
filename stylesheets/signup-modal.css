@@ -23,6 +23,7 @@
     top: calc(50% - 20vh);
     left: calc(50% - 20vw);
     padding: 3rem 0 0 3rem;
+    border-radius: 0.5rem;
 }
 #signup-exit:hover {
     cursor: pointer;

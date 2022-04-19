@@ -14,30 +14,29 @@ def _():
     # Email
     if not request.forms.get('email'):
         response.status = 400
-        return "email is missing"
+        return {"errorMessage": "Email is missing"}
     if len(request.forms.get('email').strip()) < EMAIL_MIN_LEN:
         response.status = 400
-        return f"email must contain at least {EMAIL_MIN_LEN} characters"
+        return {"errorMessage": f"Email must contain at least {EMAIL_MIN_LEN} characters"}
     if len(request.forms.get('email').strip()) > EMAIL_MAX_LEN:
         response.status = 400
-        return f"email must contain less than {EMAIL_MAX_LEN} characters"
+        return {"errorMessage": f"Email must contain less than {EMAIL_MAX_LEN} characters"}
     if not re.match(EMAIL_REGEX, request.forms.get('email').strip()):
         response.status = 400
-        return """email is not in right format. right format is johnybravo@gmail.com johnybravo@hotmail.com
-            johnybravo@stud.kea.dk johnybravo23@gmail.com johny.bravo@gmail.com johny_bravo@gmail.com"""
+        return {"errorMessage": "Email is not in right format. right format is johnybravo@gmail.com johnybravo@hotmail.com, johnybravo@stud.kea.dk johnybravo23@gmail.com johny.bravo@gmail.com johny_bravo@gmail.com"}
     # Password
     if not request.forms.get('password'):
         response.status = 400
-        return "password is missing"
+        return {"errorMessage": "Password is missing"}
     if not re.match(PASSWORD_REGEX, request.forms.get('password').strip()):
         response.status = 400
-        return "password can only contain uppercase and lowecase characters, numbers and special symbols like #, ! and $"
+        return {"errorMessage": "Password can only contain uppercase and lowecase characters, numbers and special symbols like #, ! and $"}
     if len(request.forms.get('password').strip()) < PASSWORD_MIN_LEN:
         response.status = 400
-        return f"password must contain at least {PASSWORD_MIN_LEN} characters"
+        return {"errorMessage": f"Password must contain at least {PASSWORD_MIN_LEN} characters"}
     if len(request.forms.get('password').strip()) > PASSWORD_MAX_LEN:
         response.status = 400
-        return f"password must contain at least {PASSWORD_MAX_LEN} characters"
+        return {"errorMessage": f"Password must contain at least {PASSWORD_MAX_LEN} characters"}
     # Get data 
     email = request.forms.get('email')
     password = request.forms.get('password')
