@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/landing-page.css">
     <link rel="stylesheet" href="/signup-modal.css">
     <link rel="stylesheet" href="/login-modal.css">
+    <link rel="stylesheet" href="/home.css">
     <title>Twitter</title>
 </head>
 <body>
@@ -215,11 +216,118 @@
             </footer>
         </div>
 
-        
-
+        <!-- Home overlay -->
+        <div class="home-overlay" id="home-overlay"></div>
         <!-- Home Page -->
         <div id="home-page" class="home-page">
-            <h1>Home</h1>
+            <!-- Column 1 -->
+            <div class="home-page-column-1">
+                <!-- Left side -->
+                <div class="home-page-column-1-margin"></div>
+                <!-- Right side -->
+                <div class="home-page-column-1-content">
+                    <ul class="home-page-column-1-navigation-list">
+                        <!-- Twitter logo -->
+                        <li class="home-page-column-1-navigation-list-item">
+                            <img src="/illustrations/twitter-logo.png" alt="Twitter logo">
+                        </li>
+                        <!-- Home -->
+                        <li class="home-page-column-1-navigation-list-item">
+                            <i class="fa fa-home"></i>
+                            <span class="home-page-column-1-navigation-list-item-span">Home</span>
+                        </li>
+                        <!-- Explore -->
+                        <li class="home-page-column-1-navigation-list-item">
+                            <i class="fa fa-hashtag"></i>
+                            <span class="home-page-column-1-navigation-list-item-span">Explore</span>
+                        </li>
+                        <!-- Notifications -->
+                        <li class="home-page-column-1-navigation-list-item">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="home-page-column-1-navigation-list-item-span">Notifications</span>
+                        </li>
+                        <!-- Messages -->
+                        <li class="home-page-column-1-navigation-list-item">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="home-page-column-1-navigation-list-item-span">Messages</span>
+                        </li>
+                        <!-- Bookmark -->
+                        <li class="home-page-column-1-navigation-list-item">
+                            <i class="fa fa-bookmark-o"></i>
+                            <span class="home-page-column-1-navigation-list-item-span">Bookmarks</span>
+                        </li>
+                        <!-- Lists -->
+                        <li class="home-page-column-1-navigation-list-item">
+                            <i class="fa fa-tasks"></i>
+                            <span class="home-page-column-1-navigation-list-item-span">Lists</span>
+                        </li>
+                        <!-- Profile -->
+                        <li class="home-page-column-1-navigation-list-item">
+                            <i class="fa fa-user"></i>
+                            <span class="home-page-column-1-navigation-list-item-span">Profile</span>
+                        </li>
+                        <!-- More -->
+                        <li class="home-page-column-1-navigation-list-item">
+                            <i class="fa fa-gears"></i>
+                            <span class="home-page-column-1-navigation-list-item-span">More</span>
+                        </li>
+                    </ul>
+
+                    <!-- Tweet button -->
+                    <div class="home-page-column-1-tweet-div">
+                        <button class="home-page-column-1-tweet-button">Tweet</button>
+                    </div>
+                        
+                    <!-- Bottom section -->
+                    <div class="home-page-column-1-user-info">
+                        <!-- Pop-up window -->
+                        <div class="home-page-column-1-pop-up">
+                            <!-- First option -->
+                            <div class="home-page-column-1-pop-up-1">
+                                <div class="home-page-column-1-user-info-logout-user-image">
+                                    <img class="home-page-column-1-user-info-logout-user-image-image" src="/illustrations/user.png" alt="User image.">
+                                </div>  
+    
+                                <div class="home-page-column-1-user-info-logout-user-names">
+                                    <h3 class="home-page-column-1-user-info-logout-user-names-name">David Haring</h3>
+                                    <p class="home-page-column-1-user-info-logout-user-names-username">@davidharingri</p>
+                                </div>
+                                <i class="fa fa-ellipsis-h"></i>
+                            </div>
+
+                            <!-- Second option -->
+                            <div class="home-page-column-2-pop-up">
+                                <p>Add an existing account</p>
+                            </div>
+                       
+                            <!-- Third option -->
+                            <div class="home-page-column-3-pop-up">
+                                <p>Log out @davidharingri</p>
+                            </div>
+                        </div>
+
+                        <!-- User info  -->
+                        <div class="home-page-column-1-user-info">
+                            
+                            <div class="home-page-column-1-user-info-logout">
+                                <div class="home-page-column-1-user-info-logout-user">
+                                    <div class="home-page-column-1-user-info-logout-user-image">
+                                        <img class="home-page-column-1-user-info-logout-user-image-image" src="/illustrations/user.png" alt="User image.">
+                                    </div>  
+
+                                    <div class="home-page-column-1-user-info-logout-user-names">
+                                        <h3 class="home-page-column-1-user-info-logout-user-names-name">David Haring</h3>
+                                        <p class="home-page-column-1-user-info-logout-user-names-username">@davidharingri</p>
+                                    </div>
+                                </div>
+
+                                <i class="fa fa-ellipsis-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="home-page-column-2"></div>
+            <div class="home-page-column-3"></div>
         </div>
     </main>
 

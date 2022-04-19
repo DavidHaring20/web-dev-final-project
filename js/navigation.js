@@ -16,7 +16,8 @@ const signupOverlay = document.getElementById('signup-overlay');
 const loginOverlay = document.getElementById('login-overlay');
 
 // Hide all other pages, overlays and modals
-homePage.classList.add('hidden');
+landingPage.classList.add('hidden');
+// homePage.classList.add('hidden');
 signupOverlay.classList.add('hidden');
 signupModal.classList.add('hidden');
 loginOverlay.classList.add('hidden');

@@ -1,0 +1,79 @@
+:root{
+    --blue:             #1DA1F2;
+    --black:            #14171A;
+    --darkgray:         #657786;
+    --lightgray:        #AAB8C2;
+    --extralightgray:   #E1E8ED; 
+}
+
+.home-page {
+    width: 100vw;
+    min-height: 300vh;
+}
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Column 1 */
+.home-page-column-1 {
+    height: 100vh;
+    position: fixed;
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    border-right: 1px solid var(--lightgray);
+}
+
+.home-page-column-1-margin, 
+.home-page-column-1-content {
+    width: 100%
+} 
+
+.home-page-column-1-navigation-list {
+    list-style: none;
+
+}
+
+.home-page-column-1-navigation-list-item {
+    margin: 1.5rem 0; 
+}
+
+.home-page-column-1-navigation-list-item > i {
+    font-size: 24px;
+    width: 5%;
+    margin-right: 1rem;
+}
+
+.home-page-column-1-navigation-list-item > span {
+    margin-left: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.home-page-column-1-tweet-div {
+    display: flex;
+    justify-content: center;
+}
+
+.home-page-column-1-tweet-button {
+    margin-top: 2rem;
+    width: 80%; 
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--blue);
+    padding: 0.8rem 4rem;
+    border-radius: 2rem;
+    border: 2px solid var(--blue);
+    cursor: pointer;
+}
+
+/* Pop-up window */
+
+
+
+
+.home-page-column-1-user-info-logout-user-image-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
