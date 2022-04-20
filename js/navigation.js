@@ -84,10 +84,21 @@ function openHomeOverlay() {
     if (homeOverlay.classList.contains('hidden'))
         homeOverlay.classList.remove('hidden');
 };
+// Close Home overlay
+function closeHomeOverlay() {
+    if (!homeOverlay.classList.contains('hidden'))
+        homeOverlay.classList.add('hidden');
+};
+// Open Logout pop-up
 function openLogoutPopup() {
     if (logoutPopup.classList.contains('hidden'))
         logoutPopup.classList.remove('hidden');
         logoutPopup.classList.add('home-page-column-1-pop-up');
+};
+function closeLogoutPopup() {
+    if (!logoutPopup.classList.contains('hidden'))
+        logoutPopup.classList.add('hidden');
+        logoutPopup.classList.remove('home-page-column-1-pop-up');
 };
 
 // Methods
