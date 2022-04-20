@@ -7,8 +7,19 @@
 }
 
 .home-page {
-    width: 100vw;
+    max-width: 100vw;
     min-height: 300vh;
+}
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Home overlay */
+.home-overlay {
+    z-index: 2;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #14171A;
+    opacity: 60%;
 }
 
 /* //////////////////////////////////////////////////////////////////////////// */
@@ -16,6 +27,7 @@
 /* //////////////////////////////////////////////////////////////////////////// */
 /* Column 1 */
 .home-page-column-1 {
+    z-index: 1;
     height: 100vh;
     position: fixed;
     width: 30%;
@@ -79,6 +91,7 @@
 
 /* Pop-up window */
 .home-page-column-1-pop-up {
+    z-index: 3;
     position: absolute;
     height: 20vh;
     top: 36em;
@@ -113,6 +126,7 @@
 .home-page-column-1-pop-up-1:hover,
 .home-page-column-1-pop-up-2:hover,
 .home-page-column-1-pop-up-3:hover {
+    border-radius: 0.5rem;
     background-color: var(--lightgray);
 }
 

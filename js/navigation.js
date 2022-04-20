@@ -14,10 +14,19 @@ const loginModal = document.getElementById('login-modal');
 // Overlays
 const signupOverlay = document.getElementById('signup-overlay');
 const loginOverlay = document.getElementById('login-overlay');
+const homeOverlay = document.getElementById('home-overlay');
+
+// Pop-up windows
+const logoutPopup = document.querySelector('.home-page-column-1-pop-up');
 
 // Hide all other pages, overlays and modals
 landingPage.classList.add('hidden');
 // homePage.classList.add('hidden');
+homeOverlay.classList.add('hidden');
+if (logoutPopup.classList.contains('home-page-column-1-pop-up')) {
+    logoutPopup.classList.remove('home-page-column-1-pop-up');
+    logoutPopup.classList.add('hidden');
+}
 signupOverlay.classList.add('hidden');
 signupModal.classList.add('hidden');
 loginOverlay.classList.add('hidden');
@@ -69,6 +78,17 @@ function goToHome () {
         loginModal.classList.add('hidden');
     homePage.classList.remove('hidden');
 }
+
+// Open Home overlay
+function openHomeOverlay() {
+    if (homeOverlay.classList.contains('hidden'))
+        homeOverlay.classList.remove('hidden');
+};
+function openLogoutPopup() {
+    if (logoutPopup.classList.contains('hidden'))
+        logoutPopup.classList.remove('hidden');
+        logoutPopup.classList.add('home-page-column-1-pop-up');
+};
 
 // Methods
 signupExitButton.addEventListener('click', () => {

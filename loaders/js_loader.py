@@ -19,3 +19,8 @@ def _():
 @get('/login.js')
 def _():
     return static_file('login.js', root='./js')
+
+##################################################
+@get('/home.js')
+def _():
+    return static_file('home.js', root='./js')
