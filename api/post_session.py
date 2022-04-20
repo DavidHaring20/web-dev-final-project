@@ -97,6 +97,9 @@ def _():
     # Success
     data = {
         "userId": user[0],
+        "userName": user[1],
+        "userSurname": user[3],
+        "userUsername": f"@{user[6]}",
         "login": True
     }
     dataJSON = json.dumps(data)

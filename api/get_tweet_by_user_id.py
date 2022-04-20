@@ -33,12 +33,21 @@ def _(user_id):
             exit()
         # Set custom dictionary factory
         connection.row_factory = dictionary_factory_JSON
-        # Get tweets from user
         tweets = connection.execute("""
             SELECT * FROM tweets
-            WHERE 
-                user_id = :user_id
+            LEFT JOIN users ON 
+                users.user_id = tweets.user_id
+            WHERE users.user_id = :user_id OR 
+                users.user_id IN (
+                    SELECT followed_user_id
+                    FROM follows
+                    WHERE follower_user_id = :user_id
+                )
+            ORDER BY 
+                tweet_updated_at DESC,
+                tweet_created_at DESC
         """, filter).fetchall()
+
         if not tweets:
             response.status = 404
             data = {
@@ -52,11 +61,12 @@ def _(user_id):
         print("Exception", exception) 
     finally:
         connection.close()
-    time.sleep(1)
+    time.sleep(3)
     print(tweets)
     data = {
         "tweetsFound": True,
-        "tweets": tweets
+        "tweets": tweets,
+        "numberOfTweets": len(tweets)
     }
     dataJSON = json.dumps(data)
     return dataJSON

@@ -27,7 +27,11 @@ async function login(form) {
         // OK 200
         if (data.login) {
             USER_ID = data.UserId;
-            goToHome()
+            USER_NAME = data.userName;
+            USER_SURNAME = data.userSurname;
+            USER_USERNAME = data.userUsername;
+            goToHome();
+            // getTweetByUserID();
         }
 
         // 40x 50x
