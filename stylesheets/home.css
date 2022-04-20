@@ -175,12 +175,83 @@
 .home-page-column-2-pop-up-tweet-form {
     z-index: 3;
     position: absolute;
-    height: 30vh;
+    min-height: 30vh;
     width: 60vh;
     top: 6vh;
     left: 35%;
-    padding: 1rem;
+    padding: 1.5rem;
     border: 1px solid var(--extralightgray);
     border-radius: 1rem;
     background-color: white;
+}
+
+.home-page-column-2-pop-up-tweet-form-header {
+    margin-bottom: 1rem;
+}
+
+#home-page-column-2-pop-up-tweet-form-header-close-button {
+    font-size: 24px;
+}
+
+.home-page-column-2-pop-up-tweet-form-content {
+    display: flex;
+    gap: 2rem;
+}
+.home-page-column-2-pop-up-tweet-form-content-right,
+.home-page-column-2-pop-up-tweet-form-content-right-title,
+.home-page-column-2-pop-up-tweet-form-content-right-description,
+.home-page-column-2-pop-up-tweet-form-content-right-title-input,
+.home-page-column-2-pop-up-tweet-form-content-right-description-input {
+    width: 95%;
+    border: none;
+}
+
+.home-page-column-2-pop-up-tweet-form-content-right-title-input,
+.home-page-column-2-pop-up-tweet-form-content-right-description-input {
+    padding: 0.6rem;
+    font-size: 1rem;
+}
+
+.home-page-column-2-pop-up-tweet-form-content-right-description {
+    margin: 1rem 0;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--lightgray);
+}
+
+.home-page-column-2-pop-up-tweet-form-content-left-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 45%;
+}
+
+.home-page-column-2-pop-up-tweet-form-content-right-bottom-section {
+    display: flex;
+    gap: 1rem;
+}
+
+.home-page-column-2-pop-up-tweet-form-content-right-bottom-section-image {
+    width: 55%;
+    display: flex;
+    align-content: center;
+}
+
+#home-page-column-2-pop-up-tweet-form-content-right-bottom-section-image-upload-image {
+    font-size: 32px;
+}
+
+.home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button {
+    width: 50%;
+    border-left: 1px solid var(--extralightgray);
+    padding-left: 1rem;
+}
+
+.home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button-create-tweet {
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--blue);
+    padding: 0.8rem 4rem;
+    border-radius: 2rem;
+    border: 2px solid var(--blue);
+    cursor: pointer; 
 }
