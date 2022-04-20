@@ -89,7 +89,7 @@
     
 }
 
-/* Pop-up window */
+/* Pop-up window - logout*/
 .home-page-column-1-pop-up {
     z-index: 3;
     position: absolute;
@@ -164,4 +164,23 @@
 
 #home-page-column-1-user-info-logout-button-options {
     font-size: 16px;
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Column 2 */
+
+.home-page-column-2-pop-up-tweet-form {
+    z-index: 3;
+    position: absolute;
+    height: 30vh;
+    width: 60vh;
+    top: 6vh;
+    left: 35%;
+    padding: 1rem;
+    border: 1px solid var(--extralightgray);
+    border-radius: 1rem;
+    background-color: white;
 }

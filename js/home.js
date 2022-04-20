@@ -25,10 +25,9 @@ homeOverlay.addEventListener('click', () => {
     if (!homeOverlay.classList.contains('hidden'))
         homeOverlay.classList.add('hidden');
     // Hide logout pop-up
-    if (logoutPopup.classList.contains('home-page-column-1-pop-up')) {
-        logoutPopup.classList.remove('home-page-column-1-pop-up');
-        logoutPopup.classList.add('hidden');
-    }
+    closeLogoutPopup();
+    // Hide tweet form pop-up
+    closeTweetFormPopup();
 });
 
 async function logout(id) {

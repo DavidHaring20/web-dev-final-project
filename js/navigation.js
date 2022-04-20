@@ -18,6 +18,7 @@ const homeOverlay = document.getElementById('home-overlay');
 
 // Pop-up windows
 const logoutPopup = document.querySelector('.home-page-column-1-pop-up');
+const tweetPopup = document.querySelector('.home-page-column-2-pop-up-tweet-form');
 
 // Hide all other pages, overlays and modals
 landingPage.classList.add('hidden');
@@ -27,11 +28,17 @@ if (logoutPopup.classList.contains('home-page-column-1-pop-up')) {
     logoutPopup.classList.remove('home-page-column-1-pop-up');
     logoutPopup.classList.add('hidden');
 }
+if (tweetPopup.classList.contains('home-page-column-2-pop-up-tweet-form')) {
+    tweetPopup.classList.remove('home-page-column-2-pop-up-tweet-form');
+    tweetPopup.classList.add('hidden');
+}
 signupOverlay.classList.add('hidden');
 signupModal.classList.add('hidden');
 loginOverlay.classList.add('hidden');
 loginModal.classList.add('hidden');
 
+/////////////////////////////////////////////////
+// Methods 
 
 // Go to Signup Page
 function goToSignup() {
@@ -95,13 +102,34 @@ function openLogoutPopup() {
         logoutPopup.classList.remove('hidden');
         logoutPopup.classList.add('home-page-column-1-pop-up');
 };
+// Close Logout pop-up
 function closeLogoutPopup() {
     if (!logoutPopup.classList.contains('hidden'))
         logoutPopup.classList.add('hidden');
         logoutPopup.classList.remove('home-page-column-1-pop-up');
 };
+// Open Tweet form pop-up
+function openTweetFormPopup() {
+    if (tweetPopup.classList.contains('hidden')) {
+        tweetPopup.classList.remove('hidden');
+        tweetPopup.classList.add('home-page-column-2-pop-up-tweet-form');
+    }
+};
+// Close Tweet form pop-up
+function closeTweetFormPopup() {
+    if (!tweetPopup.classList.contains('hidden')) {
+        tweetPopup.classList.add('hidden');
+        tweetPopup.classList.remove('home-page-column-2-pop-up-tweet-form');
+    }
+};
 
-// Methods
+function goToTweetForm() {
+    openHomeOverlay();
+    openTweetFormPopup();
+}
+
+/////////////////////////////////////////////////
+// Event Listeners
 signupExitButton.addEventListener('click', () => {
     goToLanding();
 });
