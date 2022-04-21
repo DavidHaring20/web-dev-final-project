@@ -9,6 +9,7 @@ const homePage = document.getElementById('home-page');
 // Buttons
 const signupExitButton = document.getElementById('signup-exit');
 const loginExitButton = document.getElementById('login-exit');
+const tweetCreateExitButton = document.getElementById('home-page-column-2-pop-up-tweet-form-header-close-button');
 
 // Modals
 const signupModal = document.getElementById('signup-modal');

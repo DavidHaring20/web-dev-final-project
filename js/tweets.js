@@ -96,6 +96,10 @@ async function apiPostTweet(form, id) {
             document.querySelector('.home-page-column-2-pop-up-tweet-form-content-right-description-input').value = "";
             document.querySelector('#create-tweet-upload-image').value = null;
             document.querySelector('#create-tweet-upload-image').files[0] = null;
+
+            // Reset button
+            submitCreateTweet.disabled = false;
+            submitCreateTweet.innerText = "Tweet";
         }
 
         closeCreateTweetPopupAndHomeOverlay();
@@ -138,6 +142,8 @@ openTweetForm.addEventListener('click', () => {
 });
 
 submitCreateTweet.addEventListener('click', () => {
+    submitCreateTweet.disabled = true;
+    submitCreateTweet.innerText = "Tweeting";
     createTweet();
 });
 
@@ -161,6 +167,10 @@ function attachDeleteEventListeners(nodeList) {
         });
     });
 };
+
+tweetCreateExitButton.addEventListener('click', () => {
+    closeCreateTweetPopupAndHomeOverlay();
+});
 
 /////////////////////////////////////////////////
 // Other methods
