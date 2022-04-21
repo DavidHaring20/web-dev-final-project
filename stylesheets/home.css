@@ -336,3 +336,42 @@
     border: 1px solid var(--lightgray);
     margin-bottom: 1.5rem;
 }
+
+/* Pop-up window - delete tweet  */
+.home-page-column-2-pop-up-delete-tweet {
+    z-index: 3;
+    position: absolute;
+    min-height: 15vh;
+    width: 60vh;
+    top: 40%;
+    left: 35%;
+    padding: 1.5rem;
+    border: 1px solid var(--extralightgray);
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.home-page-column-2-pop-up-delete-tweet-content-p {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.home-page-column-2-pop-up-delete-tweet-buttons {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.home-page-column-2-pop-up-delete-tweet-buttons-yes,
+.home-page-column-2-pop-up-delete-tweet-buttons-no {
+    width: 50%; 
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--blue);
+    padding: 0.8rem 4rem;
+    border-radius: 2rem;
+    border: 2px solid var(--blue);
+    cursor: pointer;
+}

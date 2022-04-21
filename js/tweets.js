@@ -3,15 +3,25 @@ console.log('tweets.js');
 // Buttons
 const openTweetForm = document.querySelector('.home-page-column-1-tweet-button');
 const tweetsDIV = document.querySelector('.home-page-column-2-tweets');
+const noDeleteButton = document.querySelector('.home-page-column-2-pop-up-delete-tweet-buttons-no');
+const yesDeleteButton = document.querySelector('.home-page-column-2-pop-up-delete-tweet-buttons-yes');
+let DELETE_TWEET_ID = String;
+let deleteTweetButtons = NodeList;
+
 getTweetByUserID();
 /////////////////////////////////////////////////
 // Methods
 function getTweetByUserID() {
-    apiGetTweetByUserID();
+    apiGetTweetByUserID(USER_ID);
 };
+
+function closeDeleteTweetPopupAndHomeOverlay() {
+    closeHomeOverlay();
+    closeTweetDeletePopup();
+}
 /////////////////////////////////////////////////
 // Async Methods
-async function apiGetTweetByUserID(id='6facbefe-5493-4011-b58e-04aa69515bba') {
+async function apiGetTweetByUserID(id) {
     fetch('/api/tweets/user/' + id, {
         method: 'GET'
     })
@@ -23,21 +33,79 @@ async function apiGetTweetByUserID(id='6facbefe-5493-4011-b58e-04aa69515bba') {
         if (data.tweetsFound) {
             let tweets = data.tweets;
             tweets.forEach(tweet => {
-                let tweetHTML = createHTMLForTweet(tweet.tweetImageUrl !== "", tweet.userId === '6facbefe-5493-4011-b58e-04aa69515bba', tweet.userId, tweet.userFirstName, tweet.userLastName, tweet.userUsername, tweet.tweetUpdatedAt || tweet.tweetCreatedAt, tweet.tweetTitle, tweet.tweetDescription, tweet.tweetImageUrl);
-                console.log(tweet.tweetTitle, tweet.userId === '6facbefe-5493-4011-b58e-04aa69515bba')
+                let tweetHTML = createHTMLForTweet(tweet.tweetImageUrl !== "", tweet.userId === id, tweet.tweetId, tweet.userFirstName, tweet.userLastName, tweet.userUsername, tweet.tweetUpdatedAt || tweet.tweetCreatedAt, tweet.tweetTitle, tweet.tweetDescription, tweet.tweetImageUrl);
                 tweetsDIV.insertAdjacentHTML('afterbegin', tweetHTML);
             });
+            // After creating tweets in DOM attach event listener to their delete buttons
+            deleteTweetButtons = document.querySelectorAll('#tweet-right-top-options');
+            attachDeleteEventListeners(deleteTweetButtons);
         };
     })
     .catch((error) => {
         console.log("Error", error);
     });
 };
+
+async function apiDeleteTweetByTweetID(id) {
+    // fetch
+    console.log(USER_ID, id);
+    fetch(`api/tweets/user/${USER_ID}/tweet/${id}`, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success", data);
+
+        // 200 OK
+        if (data.tweetDeleted) {
+            console.log("Deleted tweet", data.tweetDeleted);
+
+            // Remove deleted tweet in DOM
+            let deletedTweet = document.getElementById(data.tweetId);
+            deletedTweet.remove();
+        }
+
+        // Close delete tweet pop-up
+        closeDeleteTweetPopupAndHomeOverlay();
+        body.classList.remove('focused');
+    })
+    .catch((error) => {
+        console.log("Error", error);
+    });
+}
 /////////////////////////////////////////////////
 // Event listeners
 openTweetForm.addEventListener('click', () => {
     goToTweetForm();
 });
+
+noDeleteButton.addEventListener('click', () => {
+    closeDeleteTweetPopupAndHomeOverlay();
+    body.classList.remove('focused');
+});
+
+yesDeleteButton.addEventListener('click', () => {
+    apiDeleteTweetByTweetID(DELETE_TWEET_ID);
+});
+
+function attachDeleteEventListeners(nodeList) {
+    nodeList.forEach(deleteButton => {
+        deleteButton.addEventListener('click', () => {
+            DELETE_TWEET_ID = deleteButton.parentElement.parentElement.parentElement.id;
+            // Focus on delete menu
+            window.scroll(0, 0);
+            body.classList.add('focused');
+
+            // Open home overlay
+            openHomeOverlay();
+
+            // Open menu
+            openTweetDeletePopup();
+        });
+    });
+};
+
+
 
 /////////////////////////////////////////////////
 // Other methods

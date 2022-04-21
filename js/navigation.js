@@ -1,4 +1,7 @@
 console.log("navigation.js");
+// Body
+const body = document.querySelector('body');
+
 // Pages
 const landingPage = document.getElementById('landing-page');
 const homePage = document.getElementById('home-page');
@@ -19,6 +22,7 @@ const homeOverlay = document.getElementById('home-overlay');
 // Pop-up windows
 const logoutPopup = document.querySelector('.home-page-column-1-pop-up');
 const tweetPopup = document.querySelector('.home-page-column-2-pop-up-tweet-form');
+const deleteTweetPopup = document.querySelector('.home-page-column-2-pop-up-delete-tweet');
 
 // Hide all other pages, overlays and modals
 landingPage.classList.add('hidden');
@@ -31,6 +35,10 @@ if (logoutPopup.classList.contains('home-page-column-1-pop-up')) {
 if (tweetPopup.classList.contains('home-page-column-2-pop-up-tweet-form')) {
     tweetPopup.classList.remove('home-page-column-2-pop-up-tweet-form');
     tweetPopup.classList.add('hidden');
+}
+if (deleteTweetPopup.classList.contains('home-page-column-2-pop-up-delete-tweet')) {
+    deleteTweetPopup.classList.remove('home-page-column-2-pop-up-delete-tweet');
+    deleteTweetPopup.classList.add('hidden');
 }
 signupOverlay.classList.add('hidden');
 signupModal.classList.add('hidden');
@@ -120,6 +128,20 @@ function closeTweetFormPopup() {
     if (!tweetPopup.classList.contains('hidden')) {
         tweetPopup.classList.add('hidden');
         tweetPopup.classList.remove('home-page-column-2-pop-up-tweet-form');
+    }
+};
+// Open Tweet delete pop-up
+function openTweetDeletePopup() {
+    if (!deleteTweetPopup.classList.contains('home-page-column-2-pop-up-delete-tweet')) {
+        deleteTweetPopup.classList.add('home-page-column-2-pop-up-delete-tweet');
+        deleteTweetPopup.classList.remove('hidden');
+    }
+};
+// Close Tweet delete pop-up
+function closeTweetDeletePopup() {
+    if (deleteTweetPopup.classList.contains('home-page-column-2-pop-up-delete-tweet')) {
+        deleteTweetPopup.classList.remove('home-page-column-2-pop-up-delete-tweet');
+        deleteTweetPopup.classList.add('hidden');
     }
 };
 

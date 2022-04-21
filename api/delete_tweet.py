@@ -32,8 +32,6 @@ def _(user_id, tweet_id):
     if not int(tweet_id) > 0:
         response.status = 400
         return "tweet id must be a positive number"
-    # Get data from form
-    user_id = request.forms.get('user-id')
     # Create filter for deleting tweet
     filter = {
         'tweet_id': tweet_id,
@@ -52,11 +50,20 @@ def _(user_id, tweet_id):
         connection.row_factory = dictionary_factory
         # Get image name
         tweet = connection.execute("""
-            SELECT tweet_image_url FROM tweets
+            SELECT * FROM tweets
             WHERE 
                 tweet_id = :tweet_id AND
                 user_id = :user_id
         """, filter).fetchone()
+        if not tweet:
+            response.status = 404
+            print("Something went wrong. Couldn't find tweet.")
+            data = {
+                'tweetDeleted': False
+            }
+            dataJSON = json.dumps(data)
+            return data
+        print(tweet)
         image_name = tweet['tweet_image_url']
         # Delete tweet
         counter = connection.execute("""
