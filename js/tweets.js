@@ -2,6 +2,7 @@ console.log('tweets.js');
 
 // Buttons
 const openTweetForm = document.querySelector('.home-page-column-1-tweet-button');
+const tweetsDIV = document.querySelector('.home-page-column-2-tweets');
 getTweetByUserID();
 /////////////////////////////////////////////////
 // Methods
@@ -22,8 +23,9 @@ async function apiGetTweetByUserID(id='6facbefe-5493-4011-b58e-04aa69515bba') {
         if (data.tweetsFound) {
             let tweets = data.tweets;
             tweets.forEach(tweet => {
-                createHTMLForTweet()
-
+                let tweetHTML = createHTMLForTweet(tweet.tweetImageUrl !== "", tweet.userId === '6facbefe-5493-4011-b58e-04aa69515bba', tweet.userId, tweet.userFirstName, tweet.userLastName, tweet.userUsername, tweet.tweetUpdatedAt || tweet.tweetCreatedAt, tweet.tweetTitle, tweet.tweetDescription, tweet.tweetImageUrl);
+                console.log(tweet.tweetTitle, tweet.userId === '6facbefe-5493-4011-b58e-04aa69515bba')
+                tweetsDIV.insertAdjacentHTML('afterbegin', tweetHTML);
             });
         };
     })
@@ -76,7 +78,6 @@ function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, user
                         <p class="tweet-right-top-username">${username}<p>
                         <p>·</p>
                         <p class="tweet-right-top-date">${date}</p>
-                        <i id="tweet-right-top-options" class="fa fa-ellipsis-h"></i>
                     </div>
                     <div class="tweet-right-content">
                         <p class="tweet-right-content-title">${title}</p>

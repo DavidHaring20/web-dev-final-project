@@ -61,8 +61,7 @@ def _(user_id):
         print("Exception", exception) 
     finally:
         connection.close()
-    time.sleep(3)
-    print(tweets)
+    time.sleep(2)
     data = {
         "tweetsFound": True,
         "tweets": tweets,

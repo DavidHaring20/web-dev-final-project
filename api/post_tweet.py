@@ -92,7 +92,7 @@ def _():
         image_name = f"{image_id}{file_extension}"
         # Check if there is a directory where system will store images
         if not os.path.exists(f"/{IMAGES_DIRECTORY}"):
-            os.mkdir(IMAGES_DIRECTORY)
+            os.mkdir(f"/{IMAGES_DIRECTORY}")
             print(f"Created {IMAGES_DIRECTORY} directory")
 
         # Save image with new generated name
