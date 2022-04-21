@@ -1,4 +1,3 @@
-from operator import concat
 from bottle import route, request, response
 from services.validator_tweet import *
 from services.date import get_date_time
@@ -16,6 +15,7 @@ import os
 @route('/api/tweets/<tweet_id>', method='PATCH')
 def _(tweet_id):
     global counter
+    pre_update_image_name = ""
     # VALIDATION
     # Tweet Id
     if not tweet_id:
@@ -75,7 +75,6 @@ def _(tweet_id):
         'tweet_updated_at': tweet_updated_at,
         'user_id': user_id
     }
-    print(tweet)
     # Image
     if request.files.get('image'):
         # Image
@@ -144,7 +143,9 @@ def _(tweet_id):
                     tweet_id = :tweet_id AND
                     user_id = :user_id
             """, tweet).fetchone()
-            pre_update_image_name = pre_update_image['tweet_image_url']
+            print(pre_update_image)
+            if pre_update_image['tweet_image_url']:
+                pre_update_image_name = pre_update_image['tweet_image_url']
             # Query with new image
             counter = connection.execute("""
             UPDATE tweets
@@ -178,9 +179,10 @@ def _(tweet_id):
             dataJSON = json.dumps(data)
             return dataJSON
         # On success delete old picture
-        if os.path.exists(f"{IMAGES_DIRECTORY}/{pre_update_image_name}"):
-            os.remove(f"{IMAGES_DIRECTORY}/{pre_update_image_name}")
-            print("Tweet's old image deleted.")
+        if pre_update_image_name:
+            if os.path.exists(f"{IMAGES_DIRECTORY}/{pre_update_image_name}"):
+                os.remove(f"{IMAGES_DIRECTORY}/{pre_update_image_name}")
+                print("Tweet's old image deleted.")
         print("Tweet has been updated.")
         # Create filter for searching for new tweet
         filter = {
@@ -196,7 +198,12 @@ def _(tweet_id):
                 tweet_id = :tweet_id AND
                 user_id = :user_id
         """, filter).fetchone()
-        print('tweet:',updated_tweet)
+        # GET USER WHOSE TWEET WAS UPDATED
+        user = connection.execute("""
+            SELECT * FROM users
+            WHERE 
+                user_id = :user_id
+        """, filter).fetchone()
         if not updated_tweet:
             print("No tweet has been updated.")
             data = {
@@ -207,12 +214,18 @@ def _(tweet_id):
     except Exception as exception:
         response.status = 500
         print("Exception", exception)
+        data = {
+            "tweetUpdated": False          
+        }
+        dataJSON = json.dumps(data)
+        return dataJSON
     finally:
         connection.close()
     time.sleep(1)
     data = {
         'tweetUpdated': True,
-        'tweet': updated_tweet 
+        'tweet': updated_tweet,
+        'user': user
     }
     dataJSON = json.dumps(data)
     # Success

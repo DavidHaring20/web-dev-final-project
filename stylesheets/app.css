@@ -15,3 +15,9 @@ body {
 .focused {
     overflow-y: hidden;
 }
+
+.own:hover {
+    background-color: #AAB8C2;
+    cursor: pointer;
+    border-radius: 1rem;
+}

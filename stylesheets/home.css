@@ -253,6 +253,7 @@
     padding-left: 1rem;
 }
 
+.home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button-update-tweet,
 .home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button-create-tweet {
     font-weight: 500;
     font-size: 1rem;
@@ -320,13 +321,22 @@
     margin-left: 15vh;
 }
 
+#tweet-right-top-options:hover {
+    cursor: pointer;
+}
+
+.tweet-right-content {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
 .tweet-right-content-title {
-    margin-bottom: .6rem;
+    padding-bottom: .6rem;
     line-height: 1.4rem;
 }
 
 .tweet-right-content-description {
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
     line-height: 1.2rem;
 }
 
