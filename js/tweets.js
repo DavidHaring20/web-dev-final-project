@@ -32,7 +32,7 @@ function createTweet() {
         formData.append('image', document.querySelector('#create-tweet-upload-image').files[0])
 
     // fetch
-    apiPostTweet(formData);
+    apiPostTweet(formData, USER_ID);
 }
 
 function closeCreateTweetPopupAndHomeOverlay() {
@@ -71,7 +71,7 @@ async function apiGetTweetByUserID(id) {
     });
 };
 
-async function apiPostTweet(form) {
+async function apiPostTweet(form, id) {
     // fetch
     fetch('/api/tweets', {
         method: 'POST',
@@ -80,6 +80,24 @@ async function apiPostTweet(form) {
     .then(response => response.json())
     .then(data => {
         console.log("Success", data);
+
+        // 200 OK
+        if (data.tweetAdded) {
+            // Build tweet 
+            let tweetHTML = createHTMLForTweet(data.tweet.tweetImageUrl !== "", data.tweet.userId === id, data.tweet.tweetId, data.user.userFirstName, data.user.userLastName, data.user.userUsername, data.tweet.tweetUpdatedAt || data.tweet.tweetCreatedAt, data.tweet.tweetTitle, data.tweet.tweetDescription, data.tweet.tweetImageUrl);
+            tweetsDIV.insertAdjacentHTML("afterbegin", tweetHTML);
+
+            // After creating tweet in DOM attach event listener to his  delete buttons
+            deleteTweetButtons = document.querySelectorAll('#tweet-right-top-options');
+            attachDeleteEventListeners(deleteTweetButtons);
+
+            // Clear inputs
+            document.querySelector('.home-page-column-2-pop-up-tweet-form-content-right-title-input').value = "";
+            document.querySelector('.home-page-column-2-pop-up-tweet-form-content-right-description-input').value = "";
+            document.querySelector('#create-tweet-upload-image').value = null;
+            document.querySelector('#create-tweet-upload-image').files[0] = null;
+        }
+
         closeCreateTweetPopupAndHomeOverlay();
     })
     .catch((error) => {
@@ -143,8 +161,6 @@ function attachDeleteEventListeners(nodeList) {
         });
     });
 };
-
-
 
 /////////////////////////////////////////////////
 // Other methods

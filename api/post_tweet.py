@@ -151,6 +151,20 @@ def _():
             dataJSON = json.dumps(data)
             return dataJSON
         print("Tweet found.")
+        # Get user who created tweet 
+        user = connection.execute("""
+            SELECT * FROM users
+            WHERE 
+                user_id = :user_id
+        """, filter).fetchone()
+        if not user:
+            print("No user has been found.")
+            data = {
+                "userFound": False          
+            }
+            dataJSON = json.dumps(data)
+            return dataJSON
+        print("User found.")
     except Exception as exception:
         response.status = 500
         print("Exception", exception) 
@@ -159,7 +173,8 @@ def _():
     time.sleep(1)
     data = {
         "tweetAdded": True,
-        "tweet": tweet
+        "tweet": tweet,
+        "user": user
     }
     dataJSON = json.dumps(data)
     return dataJSON
