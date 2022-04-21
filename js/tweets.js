@@ -1,12 +1,17 @@
 console.log('tweets.js');
 
-// Buttons
-const openTweetForm = document.querySelector('.home-page-column-1-tweet-button');
-const tweetsDIV = document.querySelector('.home-page-column-2-tweets');
-const noDeleteButton = document.querySelector('.home-page-column-2-pop-up-delete-tweet-buttons-no');
-const yesDeleteButton = document.querySelector('.home-page-column-2-pop-up-delete-tweet-buttons-yes');
+// Global variables
 let DELETE_TWEET_ID = String;
 let deleteTweetButtons = NodeList;
+
+// Buttons
+const submitCreateTweet = document.querySelector('.home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button-create-tweet');
+const openTweetForm = document.querySelector('.home-page-column-1-tweet-button');
+const noDeleteButton = document.querySelector('.home-page-column-2-pop-up-delete-tweet-buttons-no');
+const yesDeleteButton = document.querySelector('.home-page-column-2-pop-up-delete-tweet-buttons-yes');
+
+// Div
+const tweetsDIV = document.querySelector('.home-page-column-2-tweets');
 
 getTweetByUserID();
 /////////////////////////////////////////////////
@@ -15,10 +20,30 @@ function getTweetByUserID() {
     apiGetTweetByUserID(USER_ID);
 };
 
+function createTweet() {
+    // Create form data
+    let formData = new FormData();
+
+    // Collect inputs and form FormData
+    formData.append('user-id', USER_ID);
+    formData.append('title' , document.querySelector('.home-page-column-2-pop-up-tweet-form-content-right-title-input').value);
+    formData.append('description', document.querySelector('.home-page-column-2-pop-up-tweet-form-content-right-description-input').value);
+    if (document.querySelector('#create-tweet-upload-image').files[0])
+        formData.append('image', document.querySelector('#create-tweet-upload-image').files[0])
+
+    // fetch
+    apiPostTweet(formData);
+}
+
+function closeCreateTweetPopupAndHomeOverlay() {
+    closeHomeOverlay();
+    closeTweetFormPopup();
+};
+
 function closeDeleteTweetPopupAndHomeOverlay() {
     closeHomeOverlay();
     closeTweetDeletePopup();
-}
+};
 /////////////////////////////////////////////////
 // Async Methods
 async function apiGetTweetByUserID(id) {
@@ -45,6 +70,22 @@ async function apiGetTweetByUserID(id) {
         console.log("Error", error);
     });
 };
+
+async function apiPostTweet(form) {
+    // fetch
+    fetch('/api/tweets', {
+        method: 'POST',
+        body: form
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success", data);
+        closeCreateTweetPopupAndHomeOverlay();
+    })
+    .catch((error) => {
+        console.log("Error", error);
+    });
+}
 
 async function apiDeleteTweetByTweetID(id) {
     // fetch
@@ -76,6 +117,10 @@ async function apiDeleteTweetByTweetID(id) {
 // Event listeners
 openTweetForm.addEventListener('click', () => {
     goToTweetForm();
+});
+
+submitCreateTweet.addEventListener('click', () => {
+    createTweet();
 });
 
 noDeleteButton.addEventListener('click', () => {
