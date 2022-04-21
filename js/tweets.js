@@ -67,7 +67,6 @@ async function apiDeleteTweetByTweetID(id) {
 
         // Close delete tweet pop-up
         closeDeleteTweetPopupAndHomeOverlay();
-        body.classList.remove('focused');
     })
     .catch((error) => {
         console.log("Error", error);
@@ -81,7 +80,6 @@ openTweetForm.addEventListener('click', () => {
 
 noDeleteButton.addEventListener('click', () => {
     closeDeleteTweetPopupAndHomeOverlay();
-    body.classList.remove('focused');
 });
 
 yesDeleteButton.addEventListener('click', () => {
@@ -92,10 +90,6 @@ function attachDeleteEventListeners(nodeList) {
     nodeList.forEach(deleteButton => {
         deleteButton.addEventListener('click', () => {
             DELETE_TWEET_ID = deleteButton.parentElement.parentElement.parentElement.id;
-            // Focus on delete menu
-            window.scroll(0, 0);
-            body.classList.add('focused');
-
             // Open home overlay
             openHomeOverlay();
 

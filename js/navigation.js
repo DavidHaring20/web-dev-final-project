@@ -122,6 +122,8 @@ function openTweetFormPopup() {
         tweetPopup.classList.remove('hidden');
         tweetPopup.classList.add('home-page-column-2-pop-up-tweet-form');
     }
+    window.scroll(0, 0);
+    body.classList.add('focused');
 };
 // Close Tweet form pop-up
 function closeTweetFormPopup() {
@@ -129,6 +131,7 @@ function closeTweetFormPopup() {
         tweetPopup.classList.add('hidden');
         tweetPopup.classList.remove('home-page-column-2-pop-up-tweet-form');
     }
+    body.classList.remove('focused');
 };
 // Open Tweet delete pop-up
 function openTweetDeletePopup() {
@@ -136,6 +139,8 @@ function openTweetDeletePopup() {
         deleteTweetPopup.classList.add('home-page-column-2-pop-up-delete-tweet');
         deleteTweetPopup.classList.remove('hidden');
     }
+    window.scroll(0, 0);
+    body.classList.add('focused');
 };
 // Close Tweet delete pop-up
 function closeTweetDeletePopup() {
@@ -143,6 +148,7 @@ function closeTweetDeletePopup() {
         deleteTweetPopup.classList.remove('home-page-column-2-pop-up-delete-tweet');
         deleteTweetPopup.classList.add('hidden');
     }
+    body.classList.remove('focused');
 };
 
 function goToTweetForm() {

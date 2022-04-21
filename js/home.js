@@ -6,6 +6,9 @@ const logoutButton = document.querySelector('.home-page-column-1-pop-up-3');
 
 userInfo.addEventListener('click', () => {
     console.log("user-info")
+    // Scroll 
+    window.scroll(0, 0);
+    body.classList.add('focused');
     // Open home overlay
     openHomeOverlay();
     // Open logoutPopup window
@@ -24,10 +27,13 @@ homeOverlay.addEventListener('click', () => {
     // Hide Home overlay
     if (!homeOverlay.classList.contains('hidden'))
         homeOverlay.classList.add('hidden');
+    body.classList.remove('focused');
     // Hide logout pop-up
     closeLogoutPopup();
     // Hide tweet form pop-up
     closeTweetFormPopup();
+    // Hide delete tweet pop-up
+    closeTweetDeletePopup();
 });
 
 async function logout(id) {
