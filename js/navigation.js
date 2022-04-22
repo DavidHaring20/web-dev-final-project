@@ -24,6 +24,7 @@ const homeOverlay = document.getElementById('home-overlay');
 const logoutPopup = document.querySelector('.home-page-column-1-pop-up');
 const tweetPopup = document.querySelector('.home-page-column-2-pop-up-tweet-form');
 const deleteTweetPopup = document.querySelector('.home-page-column-2-pop-up-delete-tweet');
+const followUnfollowPopup = document.getElementById('popup-3');
 
 // Hide all other pages, overlays and modals
 landingPage.classList.add('hidden');
@@ -41,6 +42,8 @@ if (deleteTweetPopup.classList.contains('home-page-column-2-pop-up-delete-tweet'
     deleteTweetPopup.classList.remove('home-page-column-2-pop-up-delete-tweet');
     deleteTweetPopup.classList.add('hidden');
 }
+followUnfollowPopup.classList.remove('.home-page-column-3-follow-unfollow');
+followUnfollowPopup.classList.add('hidden');
 signupOverlay.classList.add('hidden');
 signupModal.classList.add('hidden');
 loginOverlay.classList.add('hidden');
@@ -151,6 +154,22 @@ function closeTweetDeletePopup() {
     }
     body.classList.remove('focused');
 };
+
+// Open Follow/Unfollow
+function openFollowUnfollowPopup() {
+    followUnfollowPopup.classList.add('home-page-column-3-follow-unfollow');
+    followUnfollowPopup.classList.remove('hidden');
+    window.scroll(0, 0);
+    body.classList.add('focused');
+}
+
+// Close Follow/Unfollow
+function closeFollowUnfollow() {
+    followUnfollowPopup.classList.remove('home-page-column-3-follow-unfollow');
+    followUnfollowPopup.classList.add('hidden');
+    body.classList.remove('focused');
+}
+
 
 function goToTweetForm() {
     openHomeOverlay();

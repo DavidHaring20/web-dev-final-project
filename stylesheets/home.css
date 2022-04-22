@@ -496,6 +496,11 @@
     margin-bottom: 0.5rem;
 }
 
+.user-content-username {
+    margin-bottom: 0.75rem;
+    color: var(--darkgray);
+}
+
 .user {
     margin: 1rem 0 1rem 0;
     border-radius: 1.5rem;
@@ -505,4 +510,45 @@
 .user:hover {
     cursor: pointer;
     background-color: var(--darkgray); 
+}
+
+/* Pop-up window - Follow/Unfollow user */
+.home-page-column-3-follow-unfollow {
+    z-index: 3;
+    position: absolute;
+    min-height: 15vh;
+    width: 60vh;
+    top: 40%;
+    left: 35%;
+    padding: 1.5rem;
+    border: 1px solid var(--extralightgray);
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.home-page-column-3-follow-unfollow-content-p-start-follow,
+.home-page-column-3-follow-unfollow-content-p-end-follow {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.home-page-column-3-follow-unfollow-buttons {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.home-page-column-3-follow-unfollow-buttons-yes-start-follow,
+.home-page-column-3-follow-unfollow-buttons-yes-end-follow,
+.home-page-column-3-follow-unfollow-buttons-no {
+    width: 50%; 
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--blue);
+    padding: 0.8rem 4rem;
+    border-radius: 2rem;
+    border: 2px solid var(--blue);
+    cursor: pointer;
 }
