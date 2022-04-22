@@ -3,9 +3,12 @@ console.log('tweets.js');
 // Global variables
 let DELETE_TWEET_ID = String;
 let UPDATE_TWEET_ID = String;
+let LIKE_TWEET_ID = String;
+let UNLIKE_TWEET_ID = String;
+let likeTweetButtons = NodeList; 
+let unlikeTweetButtons = NodeList;
 let deleteTweetButtons = NodeList;
 let ownedTweets = NodeList;
-
 
 // Buttons
 const submitCreateTweet = document.querySelector('.home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button-create-tweet');
@@ -89,6 +92,10 @@ async function apiGetTweetByUserID(id) {
             // After creatint tweets in DOM attach event listener to tweet for update
             ownedTweets = document.querySelectorAll(".own");
             attachUpdateEventListeners(ownedTweets);
+
+            // After creating tweets in DOM attach event listener to tweet for update
+            likeTweetButtons = document.querySelectorAll('#like-button');
+            attachLikeEventListeners(likeTweetButtons);
         };
     })
     .catch((error) => {
@@ -141,9 +148,13 @@ async function apiPostTweet(form, id) {
             deleteTweetButtons = document.querySelectorAll('#tweet-right-top-options');
             attachDeleteEventListeners(deleteTweetButtons);
 
-            // After creatint tweets in DOM attach event listener to tweet for update
+            // After creating tweets in DOM attach event listener to tweet for update
             ownedTweets = document.querySelectorAll(".own");
             attachUpdateEventListeners(ownedTweets);
+
+            // After creating tweets in DOM attach event listener to tweet for update
+            likeTweetButtons = document.querySelectorAll('#like-button');
+            attachLikeEventListeners(likeTweetButtons);
 
             // Clear inputs
             document.querySelector('.home-page-column-2-pop-up-tweet-form-content-right-title-input').value = "";
@@ -220,6 +231,10 @@ async function apiPatchTweetByTweetID(id, form) {
             ownedTweets = document.querySelectorAll(".own");
             attachUpdateEventListeners(ownedTweets);
 
+            // After creating tweets in DOM attach event listener to tweet for update
+            likeTweetButtons = document.querySelectorAll('#like-button');
+            attachLikeEventListeners(likeTweetButtons);
+
             // Close 
             closeCreateTweetPopupAndHomeOverlay();
             // Reset values
@@ -238,6 +253,81 @@ async function apiPatchTweetByTweetID(id, form) {
         console.log("Error", error);
     });
 } 
+
+async function apiLike(userId, tweetId, button) {
+    // create form data
+    let formData = new FormData();
+    formData.append('user_id', userId);
+    formData.append('tweet_id', tweetId);
+    
+    // fetch
+    fetch('/api/likes', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success", data);
+        
+        // 200 OK
+        if (data.liked) {
+            // increment like count in DOM
+            let likeString = "  0";
+            if (!button.innerText === "")
+                likeString = button.innerText;
+            let likeCount = parseInt(likeString);
+            likeCount += 1;
+    
+            // change button in html
+            // insert unlike button
+            let unlikeButton = createHTMLForUnlikeButton(likeCount);
+            button.insertAdjacentHTML("beforebegin", unlikeButton);
+            // delete like button
+            button.remove();
+    
+            // add event listeners to unlike buttons
+            unlikeTweetButtons = document.querySelectorAll('#unlike-button');
+            attachUnlikeEventListeners(unlikeTweetButtons);
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
+async function apiUnlike(userId, tweetId, button) {
+    // fetch
+    fetch(`/api/likes/user/${userId}/tweet/${tweetId}`, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success", data);
+
+        // 200 OK
+        if (data.likeDeleted) {
+            // decrement like count in DOM
+            let likeString = button.innerText;
+            let likeCount = parseInt(likeString);
+            likeCount -= 1;
+
+            // change button in html
+            // insert like button
+            let likeButton = createHTMLForLikeButton(likeCount);
+            button.insertAdjacentHTML("beforebegin", likeButton);
+            // remove unlike button
+            button.remove();
+
+            // add event listeners to like buttons
+            unlikeTweetButtons = document.querySelectorAll('#unlike-button');
+            attachUnlikeEventListeners(unlikeTweetButtons);
+        }
+    })
+    .catch((error) => {
+        console.log("Error", error);
+    });
+
+};
 /////////////////////////////////////////////////
 // Event listeners
 openTweetForm.addEventListener('click', () => {
@@ -293,12 +383,49 @@ function attachUpdateEventListeners(nodeList) {
     });
 }
 
+function attachLikeEventListeners(nodeList) {
+    nodeList.forEach(likeButton => {
+        likeButton.addEventListener('click', () => {
+            LIKE_TWEET_ID = likeButton.parentElement.parentElement.parentElement.id;
+            
+            // disable like button
+            likeButton.disabled = true;
+
+            // call api method
+            apiLike(USER_ID, LIKE_TWEET_ID, likeButton);
+        })
+    });
+};
+
+function attachUnlikeEventListeners(nodeList) {
+    nodeList.forEach(unlikeButton => {
+        unlikeButton.addEventListener('click', () => {
+            UNLIKE_TWEET_ID = unlikeButton.parentElement.parentElement.parentElement.id;
+            console.log(UNLIKE_TWEET_ID);
+
+            // disable unlike button
+            unlikeButton.disabled = true;
+
+            // call api method
+            apiUnlike(USER_ID, UNLIKE_TWEET_ID, unlikeButton);
+        });
+    });
+};
+
 tweetCreateExitButton.addEventListener('click', () => {
     closeCreateTweetPopupAndHomeOverlay();
 });
 
 /////////////////////////////////////////////////
 // Other methods
+function createHTMLForLikeButton (likeCount) {
+    return `<i id="like-button" class="fa fa-heart-o">  ${likeCount}</i>`;
+};
+
+function createHTMLForUnlikeButton(likeCount) {
+    return `<i id="unlike-button" class="fa fa-heart">  ${likeCount}</i>`;
+};
+
 function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, username, date, title, description, imageUrl) {
     if (booleanImage === false && booleanButton === false) {
         return ` 
@@ -318,7 +445,7 @@ function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, user
                         <p class="tweet-right-content-description">${description}</p>
                     </div>
                     <div class="tweet-right-bottom">
-                        <i class="fa fa-heart-o"></i>
+                        <i id="like-button" class="fa fa-heart-o"></i>
                     </div>
                 </div>
             </div>
@@ -345,7 +472,7 @@ function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, user
                         <img class="tweet-image" src="/images/${imageUrl}" alt="Image">
                     </div>
                     <div class="tweet-right-bottom">
-                        <i class="fa fa-heart-o"></i>
+                        <i id="like-button" class="fa fa-heart-o"></i>
                     </div>
                 </div>
             </div>
@@ -370,7 +497,7 @@ function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, user
                         <p class="tweet-right-content-description">${description}</p>
                     </div>
                     <div class="tweet-right-bottom">
-                        <i class="fa fa-heart-o"></i>
+                        <i id="like-button" class="fa fa-heart-o"></i>
                     </div>
                 </div>
             </div>
@@ -396,12 +523,10 @@ function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, user
                         <img class="tweet-image" src="/images/${imageUrl}" alt="Image">
                     </div>
                     <div class="tweet-right-bottom">
-                    <i class="fa fa-heart-o"></i>
+                        <i id="like-button" class="fa fa-heart-o"></i>
                     </div>
-                    </div>
-                    </div>
-                    </div>
-                    `;
-                    // </div>
-                    // <div class="tweet-right-image-div own">
+                </div>
+            </div>
+        </div>
+        `;
 }

@@ -347,6 +347,11 @@
     margin-bottom: 1.5rem;
 }
 
+#like-button, #unlike-button {
+    font-size: 16px;
+    cursor: pointer;
+}
+
 /* Pop-up window - delete tweet  */
 .home-page-column-2-pop-up-delete-tweet {
     z-index: 3;
