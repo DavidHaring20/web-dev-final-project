@@ -82,7 +82,7 @@ async function apiGetTweetByUserID(id) {
         if (data.tweetsFound) {
             let tweets = data.tweets;
             tweets.forEach(tweet => {
-                let tweetHTML = createHTMLForTweet(tweet.tweetImageUrl !== "", tweet.userId === id, tweet.tweetId, tweet.userFirstName, tweet.userLastName, tweet.userUsername, tweet.tweetUpdatedAt || tweet.tweetCreatedAt, tweet.tweetTitle, tweet.tweetDescription, tweet.tweetImageUrl);
+                let tweetHTML = createHTMLForTweet(tweet.tweetImageUrl !== "", tweet.userId === id, tweet.tweetId, tweet.userFirstName, tweet.userLastName, tweet.userUsername, tweet.tweetUpdatedAt || tweet.tweetCreatedAt, tweet.tweetTitle, tweet.tweetDescription, tweet.tweetImageUrl, tweet.liked, tweet.likes);
                 tweetsDIV.insertAdjacentHTML('afterbegin', tweetHTML);
             });
             // After creating tweets in DOM attach event listener to their delete buttons
@@ -426,7 +426,13 @@ function createHTMLForUnlikeButton(likeCount) {
     return `<i id="unlike-button" class="fa fa-heart">  ${likeCount}</i>`;
 };
 
-function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, username, date, title, description, imageUrl) {
+function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, username, date, title, description, imageUrl, liked, likes) {
+    let HTMLForLikeButton =  `<i id="like-button" class="fa fa-heart">  ${likes}</i>`
+    if (likes == undefined) {
+        likes = "";
+        HTMLForLikeButton = `<i id="like-button" class="fa fa-heart-o">  ${likes}</i>`;
+    } 
+    
     if (booleanImage === false && booleanButton === false) {
         return ` 
         <div id="${id}" class="tweet">
@@ -445,7 +451,7 @@ function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, user
                         <p class="tweet-right-content-description">${description}</p>
                     </div>
                     <div class="tweet-right-bottom">
-                        <i id="like-button" class="fa fa-heart-o"></i>
+                        ${HTMLForLikeButton}
                     </div>
                 </div>
             </div>
@@ -472,7 +478,7 @@ function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, user
                         <img class="tweet-image" src="/images/${imageUrl}" alt="Image">
                     </div>
                     <div class="tweet-right-bottom">
-                        <i id="like-button" class="fa fa-heart-o"></i>
+                        ${HTMLForLikeButton}
                     </div>
                 </div>
             </div>
@@ -497,7 +503,7 @@ function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, user
                         <p class="tweet-right-content-description">${description}</p>
                     </div>
                     <div class="tweet-right-bottom">
-                        <i id="like-button" class="fa fa-heart-o"></i>
+                        ${HTMLForLikeButton}
                     </div>
                 </div>
             </div>
@@ -523,7 +529,7 @@ function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, user
                         <img class="tweet-image" src="/images/${imageUrl}" alt="Image">
                     </div>
                     <div class="tweet-right-bottom">
-                        <i id="like-button" class="fa fa-heart-o"></i>
+                        ${HTMLForLikeButton}
                     </div>
                 </div>
             </div>

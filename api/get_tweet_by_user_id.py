@@ -1,5 +1,5 @@
 from bottle import get, response
-from services.dictionary_factory import dictionary_factory_JSON
+from services.dictionary_factory import dictionary_factory, dictionary_factory_JSON
 from services.validator_tweet import USER_ID_REGEX, USER_ID_LEN
 import sqlite3
 import time
@@ -33,6 +33,7 @@ def _(user_id):
             exit()
         # Set custom dictionary factory
         connection.row_factory = dictionary_factory_JSON
+        # Get tweets from user and from followed users
         tweets = connection.execute("""
             SELECT * FROM tweets
             LEFT JOIN users ON 
@@ -47,7 +48,7 @@ def _(user_id):
                 tweet_updated_at DESC,
                 tweet_created_at DESC
         """, filter).fetchall()
-
+        # Check if tweets are found
         if not tweets:
             response.status = 404
             data = {
@@ -56,16 +57,37 @@ def _(user_id):
             dataJSON = json.dumps(data)
             return dataJSON
         print("Tweets found.")
+        # Get all likes relevant for user and followed user tweets
+        likeSums = connection.execute("""
+            SELECT tweet_id, COUNT(*)  
+            FROM likes
+            WHERE likes.user_id = :user_id OR 
+                likes.user_id IN (
+                    SELECT followed_user_id
+                    FROM follows
+                    WHERE follower_user_id = :user_id
+                )
+            GROUP BY tweet_id
+        """, filter).fetchall()
     except Exception as exception:
         response.status = 500
         print("Exception", exception) 
     finally:
         connection.close()
     time.sleep(2)
+    # Traverse tweets and add likes to tweets
+    if likeSums:
+        for likeSum in likeSums:
+            # print(likeSum["tweet_id"])
+            # print(likeSum["COUNT(*)"])
+            # Traverse tweets
+            for tweet in tweets:
+                if tweet["tweetId"] == likeSum["tweetId"]:
+                    tweet["likes"] = likeSum["COUNT(*)"]
     data = {
         "tweetsFound": True,
-        "tweets": tweets,
-        "numberOfTweets": len(tweets)
+        "numberOfTweets": len(tweets),
+        "tweets": tweets
     }
     dataJSON = json.dumps(data)
     return dataJSON
