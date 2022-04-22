@@ -5,6 +5,7 @@ from bottle import run
 import api.get_tweet_admin
 import api.get_tweet_by_tweet_id
 import api.get_tweet_by_user_id
+import api.get_users
 import api.post_user
 import api.post_session
 import api.post_like 

@@ -29,3 +29,8 @@ def _():
 @get('/tweets.js')
 def _():
     return static_file('tweets.js', root='./js')
+
+##################################################
+@get('/follows.js')
+def _():
+    return static_file('follows.js', root='./js')

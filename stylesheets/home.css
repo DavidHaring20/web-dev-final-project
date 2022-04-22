@@ -390,3 +390,119 @@
     border: 2px solid var(--blue);
     cursor: pointer;
 }
+
+/* //////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////// */
+/* Column 3 */
+.home-page-column-3 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 58vh;
+    display: flex;
+    min-height: 100vh;
+    padding-top: 1rem;
+    margin-left: 1rem;
+}
+
+.home-page-column-3-margin {
+    width: 30%;
+} 
+
+.home-page-column-3-content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.home-page-column-3-content-search-bar {
+    background-color: var(--extralightgray);
+    border-radius: 5rem;
+    padding: 0.5rem 3rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-content: center;
+}
+
+.search-for-something {
+    border: none;
+    background-color: var(--extralightgray);
+    padding: 0.3rem;
+    color: var(--black);
+}
+
+.home-page-column-3-content-users {
+    background-color: var(--extralightgray);
+    margin-top: 2rem;
+    border-radius: 1.5rem;
+}
+
+.home-page-column-3-content-users-followed {
+    background-color: white;
+    margin-top: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--blue);
+}
+
+.home-page-column-3-content-users-header {
+    font-size: 1.5rem;
+    margin: 1rem 0 0 0;
+    padding: 1rem;    
+}
+
+.home-page-column-3-content-users-followed-header {
+    font-size: 1.5rem;
+    margin: 1rem 0 0 0;
+    padding: 1rem;    
+}
+
+.home-page-column-3-content-users-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-page-column-3-content-users-followed-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-top-section {
+    margin-bottom: 0.5rem;
+}
+
+.user-top-section-content {
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+}
+
+.user-top-section-dot {
+    margin: 0 0.3rem;
+}
+
+.user-top-section-more {
+    width: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    justify-self: flex-end;
+    align-self: center;
+}
+
+.user-content-email {
+    margin-bottom: 0.5rem;
+}
+
+.user {
+    margin: 1rem 0 1rem 0;
+    border-radius: 1.5rem;
+    padding: 1rem;
+}
+
+.user:hover {
+    cursor: pointer;
+    background-color: var(--darkgray); 
+}
