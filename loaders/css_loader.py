@@ -24,3 +24,8 @@ def _():
 @get('/home.css')
 def _():
     return static_file('home.css', root='./stylesheets')
+
+##################################################
+@get('/admin.css')
+def _():
+    return static_file('admin.css', root='./stylesheets')

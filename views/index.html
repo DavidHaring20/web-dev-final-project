@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/signup-modal.css">
     <link rel="stylesheet" href="/login-modal.css">
     <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/admin.css">
     <title>Twitter</title>
 </head>
 <body>
@@ -213,6 +214,30 @@
                     © 2022 Twitter, Inc.
                 </span>
             </footer>
+        </div>
+
+        <!-- Admin - delete tweet pop-up -->
+        <div class="admin-page-pop-up-delete-tweet hidden">
+            <div class="admin-page-pop-up-delete-tweet-content">
+                <p class="admin-page-pop-up-delete-tweet-content-p">Are you sure you want to delete tweet?</p>
+
+                <div class="admin-page-pop-up-delete-tweet-buttons">
+                    <button class="admin-page-pop-up-delete-tweet-buttons-yes">Yes</button>
+                    <button class="admin-page-pop-up-delete-tweet-buttons-no">No</button>
+                </div>
+            </div>
+        </div>
+        <!-- Admin overlay -->
+        <div id="admin-overlay" class="admin-overlay hidden "></div>
+        <!-- Admin page -->
+        <div id="admin-page" class="admin-page">
+            <div class="admin-page-header-div">
+                <h3 class="admin-page-header-div-h3">
+                    Users tweets
+                </h3>
+            </div>
+
+            <div class="admin-page-tweets-div"></div>
         </div>
 
         <!-- Home overlay -->
@@ -433,6 +458,7 @@
     <script src="/tweets.js"></script>
     <script src="/login.js"></script>
     <script src="/home.js"></script>
+    <script src="/admin.js"></script>
     <script src="/follows.js"></script>
 </body>
 </html>

@@ -28,7 +28,7 @@ const followUnfollowPopup = document.getElementById('popup-3');
 
 // Hide all other pages, overlays and modals
 landingPage.classList.add('hidden');
-// homePage.classList.add('hidden');
+homePage.classList.add('hidden');
 homeOverlay.classList.add('hidden');
 if (logoutPopup.classList.contains('home-page-column-1-pop-up')) {
     logoutPopup.classList.remove('home-page-column-1-pop-up');
