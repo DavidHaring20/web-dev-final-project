@@ -5,6 +5,7 @@ const body = document.querySelector('body');
 const landingPage = document.getElementById('landing-page');
 const homePage = document.getElementById('home-page');
 const adminPage = document.getElementById('admin-page');
+const column3 = document.querySelector('.home-page-column-3')
 
 // Buttons
 const signupExitButton = document.getElementById('signup-exit');
@@ -49,7 +50,8 @@ signupOverlay.classList.add('hidden');
 signupModal.classList.add('hidden');
 loginOverlay.classList.add('hidden');
 loginModal.classList.add('hidden');
-
+column3.classList.remove('home-page-column-3')
+column3.classList.add('hidden')
 /////////////////////////////////////////////////
 // Methods 
 
@@ -170,7 +172,17 @@ function closeFollowUnfollow() {
     followUnfollowPopup.classList.add('hidden');
     body.classList.remove('focused');
 }
+// Open Column 3
+function openColumn3() {
+    column3.classList.add('home-page-column-3')
+    column3.classList.remove('hidden')
+}
 
+// Close Column 3
+function closeColumn3() {
+    column3.classList.remove('home-page-column-3')
+    column3.classList.add('hidden')
+}
 
 function goToTweetForm() {
     openHomeOverlay();

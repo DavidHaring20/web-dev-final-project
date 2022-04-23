@@ -54,6 +54,9 @@ async function logout(id) {
             
             // Open Landing page
             goToLanding();
+
+            // Close Column 3
+            closeColumn3()
         }
         
         // Make button enabled

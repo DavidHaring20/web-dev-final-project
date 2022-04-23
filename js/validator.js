@@ -4,7 +4,6 @@ function _one(q, e=document){return e.querySelector(q)}
 // ##############################
 function validate(callback){
     const form = event.target
-    console.log(form)
     const validate_error = "rgba(240, 130, 240, 0.2)"
     _all("[data-validate]",form).forEach(function(element){ 
       element.classList.remove("validate_error")

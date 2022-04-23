@@ -44,6 +44,7 @@ def _():
         'email': email,
         'password': password
     }
+    print("Filter", filter)
     # CHECK IF THE USER EXISTS
     try:
         # Create connection
@@ -94,6 +95,7 @@ def _():
     # Create cookie with JWT
     jwt_encoded = jwt.encode(payload, secret_key)
     response.set_cookie('jwt', jwt_encoded)
+    response.status = 200
     # Success
     data = {
         "userId": user[0],

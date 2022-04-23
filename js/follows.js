@@ -17,15 +17,13 @@ const noBUTTON = document.querySelector('.home-page-column-3-follow-unfollow-but
 const followP = document.querySelector('.home-page-column-3-follow-unfollow-content-p-start-follow')
 const unfollowP = document.querySelector('.home-page-column-3-follow-unfollow-content-p-end-follow')
 
-apiGetUsers()
-
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 // API Methods
-async function apiGetUsers() {
+async function apiGetUsers(id) {
     // Fetch
-    fetch('/api/users/' + USER_ID, {
+    fetch('/api/users/' + id, {
         method: 'GET'
     })
     .then(response => response.json())

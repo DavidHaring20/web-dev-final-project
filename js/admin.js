@@ -21,7 +21,6 @@ const noDeleteAdminTweetBUTTON = document.querySelector('.admin-page-pop-up-dele
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 // API Methods
-apiGetAllTweets()
 async function apiGetAllTweets() {
     // Fetch
     fetch('/api/tweets/admin/' + USER_ID, {

@@ -18,11 +18,10 @@ const yesDeleteButton = document.querySelector('.home-page-column-2-pop-up-delet
 // Div
 const tweetsDIV = document.querySelector('.home-page-column-2-tweets');
 
-getTweetByUserID();
 /////////////////////////////////////////////////
 // Methods
-function getTweetByUserID() {
-    apiGetTweetByUserID(USER_ID);
+function getTweetByUserID(id) {
+    apiGetTweetByUserID(id);
 };
 
 function createTweet() {
@@ -159,14 +158,14 @@ async function apiPostTweet(form, id) {
             document.querySelector('#create-tweet-upload-image').value = null;
             document.querySelector('#create-tweet-upload-image').files[0] = null;
 
-            // Reset button
-            submitCreateTweet.disabled = false;
-            submitCreateTweet.innerText = "Tweet";
             submitCreateTweet.classList.remove('hidden');
             submitUpdateTweet.classList.remove('hidden');
+            closeCreateTweetPopupAndHomeOverlay();
         }
-
-        closeCreateTweetPopupAndHomeOverlay();
+        
+        // Reset button
+        submitCreateTweet.disabled = false;
+        submitCreateTweet.innerText = "Tweet";
     })
     .catch((error) => {
         console.log("Error", error);

@@ -292,47 +292,52 @@
                     <p>Log out @davidharingri</p>
                 </div>
             </div>
-            <!-- Pop-up window - tweeter form -->
-            <div class="home-page-column-2-pop-up-tweet-form">
-                <!-- Header -->
-                <div class="home-page-column-2-pop-up-tweet-form-header"> 
-                    <i id="home-page-column-2-pop-up-tweet-form-header-close-button" class="fa fa-close"></i>
-                </div>
-                <!-- Content -->
-                <div class="home-page-column-2-pop-up-tweet-form-content">
-                    <!-- Left side - user photo -->
-                    <div class="home-page-column-2-pop-up-tweet-form-content-left">
-                        <img class="home-page-column-2-pop-up-tweet-form-content-left-image" src="/illustrations/user.png" alt="User photo">
+            
+            <!-- Form -->
+            <form onsubmit="validate(createTweet); return false">
+                <!-- Pop-up window - tweeter form -->
+                <div class="home-page-column-2-pop-up-tweet-form">
+                    <!-- Header -->
+                    <div class="home-page-column-2-pop-up-tweet-form-header"> 
+                        <i id="home-page-column-2-pop-up-tweet-form-header-close-button" class="fa fa-close"></i>
                     </div>
-                    <!-- Right side - tweet form -->
-                    <div class="home-page-column-2-pop-up-tweet-form-content-right">
-                        <!-- Title -->
-                        <div class="home-page-column-2-pop-up-tweet-form-content-right-title">
-                            <!-- <p class="home-page-column-2-pop-up-tweet-form-content-right-title-p">Title:</p> -->
-                            <input type="text" class="home-page-column-2-pop-up-tweet-form-content-right-title-input" placeholder="How are you feeling?">
+                    <!-- Content -->
+                    <div class="home-page-column-2-pop-up-tweet-form-content">
+                        <!-- Left side - user photo -->
+                        <div class="home-page-column-2-pop-up-tweet-form-content-left">
+                            <img class="home-page-column-2-pop-up-tweet-form-content-left-image" src="/illustrations/user.png" alt="User photo">
                         </div>
-                        <!-- Description -->
-                        <div class="home-page-column-2-pop-up-tweet-form-content-right-description">
-                            <!-- <p class="home-page-column-2-pop-up-tweet-form-content-right-description-p">Description</p> -->
-                            <input type="text" class="home-page-column-2-pop-up-tweet-form-content-right-description-input" placeholder="What's happening?">
-                        </div>
-                        <!-- Bottom section -->
-                        <div class="home-page-column-2-pop-up-tweet-form-content-right-bottom-section">
-                            <!-- Image -->
-                            <div class="home-page-column-2-pop-up-tweet-form-content-right-bottom-section-image">
-                                <label for="create-tweet-upload-image">
-                                    <i id="home-page-column-2-pop-up-tweet-form-content-right-bottom-section-image-upload-image" class="fa fa-file-image-o"></i>
-                                </label>
-                                <input type="file" name="create-tweet-upload-image" id="create-tweet-upload-image" class="hidden">
+                        <!-- Right side - tweet form -->
+                        <div class="home-page-column-2-pop-up-tweet-form-content-right">
+                            <!-- Title -->
+                            <div class="home-page-column-2-pop-up-tweet-form-content-right-title">
+                                <input type="text" class="home-page-column-2-pop-up-tweet-form-content-right-title-input" placeholder="How are you feeling?"
+                                data-validate="str" data-min="10" data-max="40">
                             </div>
-                            <!-- Button -->
-                            <div class="home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button">
-                                <button class="home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button-create-tweet">Tweet</button>
-                                <button class="home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button-update-tweet">Update</button>
+                            <!-- Description -->
+                            <div class="home-page-column-2-pop-up-tweet-form-content-right-description">
+                                <input type="text" class="home-page-column-2-pop-up-tweet-form-content-right-description-input" placeholder="What's happening?"
+                                data-validate="str" data-min="20" data-max="400">
+                            
+                            </div>
+                            <!-- Bottom section -->
+                            <div class="home-page-column-2-pop-up-tweet-form-content-right-bottom-section">
+                                <!-- Image -->
+                                <div class="home-page-column-2-pop-up-tweet-form-content-right-bottom-section-image">
+                                    <label for="create-tweet-upload-image">
+                                        <i id="home-page-column-2-pop-up-tweet-form-content-right-bottom-section-image-upload-image" class="fa fa-file-image-o"></i>
+                                    </label>
+                                    <input type="file" name="create-tweet-upload-image" id="create-tweet-upload-image" class="hidden">
+                                </div>
+                                <!-- Button -->
+                                <div class="home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button">
+                                    <button class="home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button-create-tweet">Tweet</button>
+                                    <button class="home-page-column-2-pop-up-tweet-form-content-right-bottom-section-button-update-tweet">Update</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <!-- Pop-up window delete tweet -->
             <div class="home-page-column-2-pop-up-delete-tweet">
@@ -476,9 +481,9 @@
     <script src="/signup.js"></script>
     <script src="/app.js"></script>
     <script src="/tweets.js"></script>
+    <script src="/follows.js"></script>
     <script src="/login.js"></script>
     <script src="/home.js"></script>
     <script src="/admin.js"></script>
-    <script src="/follows.js"></script>
 </body>
 </html>

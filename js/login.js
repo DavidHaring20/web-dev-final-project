@@ -26,12 +26,19 @@ async function login(form) {
         console.log("Success", data);
         // OK 200
         if (data.login) {
-            USER_ID = data.UserId;
+            USER_ID = data.userId;
             USER_NAME = data.userName;
             USER_SURNAME = data.userSurname;
             USER_USERNAME = data.userUsername;
+
+            console.log(data.userId)
+            // Get User tweets and Followed/Non-Followed
+            getTweetByUserID(data.userId)
+            apiGetUsers(data.userId)
+            // Open Column 3 on Home Page
+            openColumn3()
+            // Open loading screen
             goToHome();
-            // getTweetByUserID();
         }
 
         // 40x 50x
