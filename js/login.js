@@ -9,11 +9,11 @@ loginSubmitButton.addEventListener('click', () => {
     // Disable log in button
     loginSubmitButton.disabled = true;
     loginSubmitButton.innerText = 'Logging in';
-     // Get data from form and create form data
-     const form = new FormData();
-     form.append('email', document.getElementById('email').value);
-     form.append('password', document.getElementById('password').value);
-     login(form)
+    // Get data from form and create form data
+    const form = new FormData();
+    form.append('email', document.getElementById('email').value);
+    form.append('password', document.getElementById('password').value);
+    login(form)
 });
 async function login(form) {
     // Fetch

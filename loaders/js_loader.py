@@ -39,3 +39,8 @@ def _():
 @get('/admin.js')
 def _():
     return static_file('admin.js', root='./js')
+
+##################################################
+@get('/validator.js')
+def _():
+    return static_file('validator.js', root='./js')

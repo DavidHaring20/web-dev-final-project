@@ -1,4 +1,3 @@
-console.log("signup.js");
 // Error message
 const signupErrorMessage = document.querySelector('.signup-error-message');
 

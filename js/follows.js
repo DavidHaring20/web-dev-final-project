@@ -1,5 +1,3 @@
-console.log("follows.js")
-
 // Global Variables
 let FOLLOW_ID = String;
 let UNFOLLOW_ID = String;
@@ -32,11 +30,8 @@ async function apiGetUsers() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log("Success GET Users");
         // 200 OK
         if (data.usersGet) {
-            console.log("All good.")
-
             // Create non-followed users in HTML 
             data.usersNotFollowed.forEach(userNotFollowed => {
                 let userHTML = createHTMLForNonFollowing(userNotFollowed.userId, userNotFollowed.userFirstName, userNotFollowed.userLastName, userNotFollowed.userEmail, userNotFollowed.userUsername,userNotFollowed.tweetAmount || "0")

@@ -1,10 +1,10 @@
-console.log("navigation.js");
 // Body
 const body = document.querySelector('body');
 
 // Pages
 const landingPage = document.getElementById('landing-page');
 const homePage = document.getElementById('home-page');
+const adminPage = document.getElementById('admin-page');
 
 // Buttons
 const signupExitButton = document.getElementById('signup-exit');
@@ -27,8 +27,9 @@ const deleteTweetPopup = document.querySelector('.home-page-column-2-pop-up-dele
 const followUnfollowPopup = document.getElementById('popup-3');
 
 // Hide all other pages, overlays and modals
-landingPage.classList.add('hidden');
+// landingPage.classList.add('hidden');
 homePage.classList.add('hidden');
+adminPage.classList.add('hidden');
 homeOverlay.classList.add('hidden');
 if (logoutPopup.classList.contains('home-page-column-1-pop-up')) {
     logoutPopup.classList.remove('home-page-column-1-pop-up');

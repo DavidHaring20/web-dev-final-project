@@ -1,5 +1,3 @@
-console.log('tweets.js');
-
 // Global variables
 let DELETE_TWEET_ID = String;
 let UPDATE_TWEET_ID = String;
@@ -76,7 +74,6 @@ async function apiGetTweetByUserID(id) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log("Success", data);
 
         // OK 200
         if (data.tweetsFound) {

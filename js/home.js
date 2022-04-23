@@ -1,5 +1,3 @@
-console.log("home.js");
-
 // Elements
 const userInfo = document.querySelector('.home-page-column-1-user-info');
 const logoutButton = document.querySelector('.home-page-column-1-pop-up-3');

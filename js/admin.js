@@ -1,4 +1,3 @@
-console.log("admnin.js")
 
 // Global variables
 let DELETE_ADMIN_TWEET_STRING = String
@@ -30,8 +29,6 @@ async function apiGetAllTweets() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log("Success", data)
-
         // 200 OK
         if (data.tweetsFound) {
             data.tweets.forEach(tweet => {
