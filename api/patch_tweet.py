@@ -20,49 +20,49 @@ def _(tweet_id):
     # Tweet Id
     if not tweet_id:
         response.status = 400
-        return "tweet_id is missing"
+        return {"errorMessage": "tweet_id is missing" }
     if not re.match(TWEET_ID_REGEX, tweet_id):
         response.status = 400
-        return "tweet id must be a positive number and can contain only integers"
+        return {"errorMessage": "tweet id must be a positive number and can contain only integers" }
     if not int(tweet_id) > 0:
         response.status = 400
-        return "tweet id must be a positive number"
+        return {"errorMessage": "tweet id must be a positive number" }
     # Title
     if not request.forms.get('title'):
         response.status = 400
-        return "title is missing"
+        return {"errorMessage": "title is missing" }
     if not re.match(TEXT_REGEX, request.forms.get('title').strip()):
         response.status = 400
-        return "title can only contain letters, numbers and these symbols: \".\", \",\", \"!\", \"?\", \"'\", \"(\", \")\""
+        return {"errorMessage": "title can only contain letters, numbers and these symbols: \".\", \",\", \"!\", \"?\", \"'\", \"(\", \")\""}
     if len(request.forms.get('title').strip()) < TITLE_MIN_LEN:
         response.status = 400
-        return f"title must contain at least {TITLE_MIN_LEN} characters"
+        return {"errorMessage": f"title must contain at least {TITLE_MIN_LEN} characters"}
     if len(request.forms.get('title').strip()) > TITLE_MAX_LEN:
         response.status = 400
-        return f"title must contain less than {TITLE_MAX_LEN} characters"
+        return {"errorMessage": f"title must contain less than {TITLE_MAX_LEN} characters"}
     # Description
     if not request.forms.get('description'):
         response.status = 400
-        return "description is missing"
+        return {"errorMessage": "description is missing"}
     if not re.match(TEXT_REGEX, request.forms.get('description').strip()):
         response.status = 400
-        return "description can only contain letters, numbers and these symbols: \".\", \",\", \"!\", \"?\", \"'\", \"(\", \")\""
+        return {"errorMessage": "description can only contain letters, numbers and these symbols: \".\", \",\", \"!\", \"?\", \"'\", \"(\", \")\""}
     if len(request.forms.get('description').strip()) < DESCRIPTION_MIN_LEN:
         response.status = 400
-        return f"description must contain at least {DESCRIPTION_MIN_LEN} characters"
+        return {"errorMessage": f"description must contain at least {DESCRIPTION_MIN_LEN} characters"}
     if len(request.forms.get('description').strip()) > DESCRIPTION_MAX_LEN:
         response.status = 400
-        return f"description must contain less than {DESCRIPTION_MAX_LEN} charaters"
+        return {"errorMessage": f"description must contain less than {DESCRIPTION_MAX_LEN} charaters"}
     # User Id
     if not request.forms.get('user-id'):
         response.status = 400
-        return "user-id is missing"
+        return {"errorMessage": "user-id is missing"}
     if not re.match(USER_ID_REGEX, request.forms.get('user-id').strip()):
         response.status = 400
-        return "user-id should contain only characters, digits and hyphens(-)"
+        return {"errorMessage": "user-id should contain only characters, digits and hyphens(-)"}
     if not len(request.forms.get('user-id').strip()) == USER_ID_LEN:
         response.status = 400
-        return f"user-id should have {USER_ID_LEN} characters"
+        return {"errorMessage": f"user-id should have {USER_ID_LEN} characters"}
     # Get data from form
     tweet_title = request.forms.get('title')
     tweet_description = request.forms.get('description')

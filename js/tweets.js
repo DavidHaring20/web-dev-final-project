@@ -89,6 +89,11 @@ async function apiGetTweetByUserID(id) {
             ownedTweets = document.querySelectorAll(".own");
             attachUpdateEventListeners(ownedTweets);
 
+            // After creating tweet in DOM attach event listeners to tweet for update
+            unlikeTweetButtons = document.querySelectorAll('#unlike-button')
+            console.log(unlikeTweetButtons)
+            attachUnlikeEventListeners(unlikeTweetButtons)
+
             // After creating tweets in DOM attach event listener to tweet for update
             likeTweetButtons = document.querySelectorAll('#like-button');
             attachLikeEventListeners(likeTweetButtons);
@@ -147,6 +152,10 @@ async function apiPostTweet(form, id) {
             // After creating tweets in DOM attach event listener to tweet for update
             ownedTweets = document.querySelectorAll(".own");
             attachUpdateEventListeners(ownedTweets);
+
+            // After creating tweet in DOM attach event listeners to tweet for update
+            unlikeTweetButtons = document.querySelectorAll('#unlike-button')
+            attachUnlikeEventListeners(unlikeTweetButtons)
 
             // After creating tweets in DOM attach event listener to tweet for update
             likeTweetButtons = document.querySelectorAll('#like-button');
@@ -231,6 +240,10 @@ async function apiPatchTweetByTweetID(id, form) {
             likeTweetButtons = document.querySelectorAll('#like-button');
             attachLikeEventListeners(likeTweetButtons);
 
+            // After creating tweet in DOM attach event listeners to tweet for update
+            unlikeTweetButtons = document.querySelectorAll('#unlike-button')
+            attachUnlikeEventListeners(unlikeTweetButtons)
+
             // Close 
             closeCreateTweetPopupAndHomeOverlay();
             // Reset values
@@ -238,12 +251,12 @@ async function apiPatchTweetByTweetID(id, form) {
             document.querySelector('.home-page-column-2-pop-up-tweet-form-content-right-description-input').value = "";
             document.querySelector('#create-tweet-upload-image').value = null;
             document.querySelector('#create-tweet-upload-image').files[0] = null;
+            submitCreateTweet.classList.remove('hidden');
+            submitUpdateTweet.classList.remove('hidden');
         }
             // Unhide buttons 
             submitUpdateTweet.disabled = false;
             submitUpdateTweet.innerText = 'Update';
-            submitCreateTweet.classList.remove('hidden');
-        submitUpdateTweet.classList.remove('hidden');
     })
     .catch((error) => {
         console.log("Error", error);
@@ -423,7 +436,7 @@ function createHTMLForUnlikeButton(likeCount) {
 };
 
 function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, username, date, title, description, imageUrl, liked, likes) {
-    let HTMLForLikeButton =  `<i id="like-button" class="fa fa-heart">  ${likes}</i>`
+    let HTMLForLikeButton =  `<i id="unlike-button" class="fa fa-heart">  ${likes}</i>`
     if (likes == undefined) {
         likes = "";
         HTMLForLikeButton = `<i id="like-button" class="fa fa-heart-o">  ${likes}</i>`;
