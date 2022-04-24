@@ -1,4 +1,4 @@
-from bottle import run
+from bottle import run, default_app
 
 ##################################################
 # Api
@@ -26,4 +26,7 @@ import loaders.css_loader
 import loaders.image_loader
 
 ##################################################
-run(host='localhost', port='8080', reloader=True, debug=True)
+try:
+    application = default_app()
+except: 
+    run(host='localhost', port='8080', reloader=True, debug=True)
