@@ -73,7 +73,7 @@ async function apiGetTweetByUserID(id) {
     })
     .then(response => response.json())
     .then(data => {
-
+        console.log(data)
         // OK 200
         if (data.tweetsFound) {
             let tweets = data.tweets;
@@ -94,7 +94,7 @@ async function apiGetTweetByUserID(id) {
             console.log(unlikeTweetButtons)
             attachUnlikeEventListeners(unlikeTweetButtons)
 
-            // After creating tweets in DOM attach event listener to tweet for update
+            // After creating tweets in DOM attach event listener to tweet for like
             likeTweetButtons = document.querySelectorAll('#like-button');
             attachLikeEventListeners(likeTweetButtons);
         };
@@ -281,11 +281,14 @@ async function apiLike(userId, tweetId, button) {
         // 200 OK
         if (data.liked) {
             // increment like count in DOM
-            let likeString = "  0";
-            if (!button.innerText === "")
+            let likeString = "0";
+            console.log(button.innerText)
+            if (!button.innerText == "")
                 likeString = button.innerText;
             let likeCount = parseInt(likeString);
+            console.log(likeCount)
             likeCount += 1;
+            console.log(likeCount)
     
             // change button in html
             // insert unlike button
@@ -330,6 +333,9 @@ async function apiUnlike(userId, tweetId, button) {
             // add event listeners to like buttons
             unlikeTweetButtons = document.querySelectorAll('#unlike-button');
             attachUnlikeEventListeners(unlikeTweetButtons);
+
+            likeTweetButtons = document.querySelectorAll('#like-button');
+            attachLikeEventListeners(likeTweetButtons);
         }
     })
     .catch((error) => {
@@ -436,11 +442,13 @@ function createHTMLForUnlikeButton(likeCount) {
 };
 
 function createHTMLForTweet(booleanImage, booleanButton, id, name, surname, username, date, title, description, imageUrl, liked, likes) {
-    let HTMLForLikeButton =  `<i id="unlike-button" class="fa fa-heart">  ${likes}</i>`
+    // Check likes, if they are undefined, assign them "" to not display undefined in DOM
     if (likes == undefined) {
         likes = "";
-        HTMLForLikeButton = `<i id="like-button" class="fa fa-heart-o">  ${likes}</i>`;
     } 
+    let HTMLForLikeButton = `<i id="like-button" class="fa fa-heart-o">  ${likes}</i>`;
+    if (liked)
+        HTMLForLikeButton =  `<i id="unlike-button" class="fa fa-heart">  ${likes}</i>`
     
     if (booleanImage === false && booleanButton === false) {
         return ` 

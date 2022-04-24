@@ -59,16 +59,16 @@ def _(user_id):
         print("Tweets found.")
         # Get all likes relevant for user and followed user tweets
         likeSums = connection.execute("""
-            SELECT tweet_id, COUNT(*)  
+            SELECT *  
             FROM likes
-            WHERE likes.user_id = :user_id OR 
-                likes.user_id IN (
-                    SELECT followed_user_id
+            WHERE likes.user_id = :user_id OR
+                likes.user_id = (
+                    SELECT follower_user_id
                     FROM follows
-                    WHERE follower_user_id = :user_id
+                    WHERE followed_user_id = :user_id
                 )
-            GROUP BY tweet_id
-        """, filter).fetchall()
+            """, filter).fetchall()
+        print("Likes", likeSums)
     except Exception as exception:
         response.status = 500
         print("Exception", exception) 
@@ -77,13 +77,14 @@ def _(user_id):
     time.sleep(2)
     # Traverse tweets and add likes to tweets
     if likeSums:
-        for likeSum in likeSums:
-            # print(likeSum["tweet_id"])
-            # print(likeSum["COUNT(*)"])
-            # Traverse tweets
-            for tweet in tweets:
-                if tweet["tweetId"] == likeSum["tweetId"]:
-                    tweet["likes"] = likeSum["COUNT(*)"]
+        for tweet in tweets:
+            tweet['likes'] = 0
+            tweet['liked'] = False
+            for like in likeSums:
+                if like['tweetId'] == tweet['tweetId']:
+                    tweet['likes'] += 1
+                    if like['userId'] == user_id:
+                        tweet['liked'] = True
     data = {
         "tweetsFound": True,
         "numberOfTweets": len(tweets),
