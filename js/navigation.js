@@ -101,6 +101,16 @@ function goToHome () {
     homePage.classList.remove('hidden');
 }
 
+// Go to Admin Page
+function goToAdminPage() {
+    // From Login Page
+    if (!loginOverlay.classList.contains('hidden'))
+        loginOverlay.classList.add('hidden');
+    if (!loginModal.classList.contains('hidden'))
+        loginModal.classList.add('hidden');
+    adminPage.classList.remove('hidden');
+}
+
 // Open Home overlay
 function openHomeOverlay() {
     if (homeOverlay.classList.contains('hidden'))

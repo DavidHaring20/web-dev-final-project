@@ -102,6 +102,7 @@ def _():
         "userName": user[1],
         "userSurname": user[3],
         "userUsername": f"@{user[6]}",
+        "userRole": user[9],
         "login": True
     }
     dataJSON = json.dumps(data)
