@@ -3,6 +3,7 @@ function _one(q, e=document){return e.querySelector(q)}
 
 // ##############################
 function validate(callback){
+    event.preventDefault()
     const form = event.target
     const validate_error = "rgba(240, 130, 240, 0.2)"
     _all("[data-validate]",form).forEach(function(element){ 
