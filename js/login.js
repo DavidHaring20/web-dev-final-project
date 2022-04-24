@@ -1,5 +1,3 @@
-console.log('login.js')
-
 // Error message
 const loginErrorMessage = document.querySelector('.login-modal-error-message');
 
